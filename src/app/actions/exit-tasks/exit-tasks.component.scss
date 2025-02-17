@@ -1,0 +1,27 @@
+.custom-selected{
+    border : 1px solid rgb(14 165 233);
+}
+
+.active {
+    border : 1px solid rgb(14 165 233);
+    border-radius: 10px;
+    
+  }
+  
+  .inactive {
+  
+  }
+
+  .mat-divider , .mat-divider-vertical {
+    border-top-color: rgb(227, 221, 222);
+  }
+
+
+  .panel-active{
+    border :  1px solid rgb(14 165 233);
+    font-weight: bold;
+  }
+
+  .panel-inactive{
+    font-weight: normal;
+  }

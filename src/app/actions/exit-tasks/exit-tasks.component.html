@@ -1,0 +1,256 @@
+
+<div class="flex flex-row h-auto">
+<div class="  w-[30%] ">
+    <div class="flex flex-col ">
+        <div class="relative p-4">
+            <!-- Search Icon inside the input field -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="absolute left-6 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+
+            <!-- Search Input -->
+            <input type="text" [(ngModel)]="searchTerm" (keyup)="applyFilter()" placeholder="Search "
+                class="p-2 pl-10 border w-full border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100" />
+        </div>
+        <div class="">
+
+            <mat-tab-group>
+                <mat-tab label="pending">
+                  <div class=" max-h-[70vh]  overflow-y-auto">
+                    <div *ngFor="let emp of filteredData;let i=index" (click)="selectUser(emp)" >
+                        <div class="flex w-full hover:bg-gray-100 " (click)="setActiveIndex(i)" [ngClass]="{'active': activeIndex === i, 'inactive': activeIndex !== i}">
+                            <div class="flex flex-row w-full p-2" >
+                                <img src="../../../assets/downloaded/Union.jpg" alt="img" class="rounded-full p-2" />
+                                <div class="flex flex-col w-full overflow-hidden">
+                                    <div class="flex flex-row p-1 justify-between w-full" >
+                                        <span class="font-normal text-[0.8rem]">{{emp.employeeName}}</span>
+                                        <span class="font-normal text-[0.6rem]"> {{emp.completedTaskTime}} </span>
+                                    </div>
+    
+                                    <div class="flex flex-row justify-between p-1 font-normal text-[0.7rem] text-gray-500">
+                                        <span class=" text-gray-500">{{emp.completedTaskDate}}</span>
+                                        <div class="flex h-auto items-center ">
+                                            <img src="../../../assets/downloaded/Ellipse 2352.svg" alt=" img" class="w-2 h-2 "/>
+                                            <span class="  text-gray-500 px-2">Completed Tasks : {{emp.completedTasks}}</span>
+                                        </div>
+                                        <img src="../../../assets/downloaded/Red flag.svg" alt="" class="w-4" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                  </div>
+                </mat-tab>
+                <mat-tab label="History">
+                   <div class="max-h-[70vh]  overflow-y-auto">
+                    <div *ngFor="let emp of filteredData;let i=index" (click)="selectUser(emp)" >
+                        <div class="flex w-full hover:bg-gray-100 " (click)="setActiveIndex(i)" [ngClass]="{'active': activeIndex === i, 'inactive': activeIndex !== i}">
+                            <div class="flex flex-row w-full p-2" >
+                                <img src="../../../assets/downloaded/Union.jpg" alt="img" class="rounded-full p-2" />
+                                <div class="flex flex-col w-full overflow-hidden">
+                                    <div class="flex flex-row p-1 justify-between w-full" >
+                                        <span class="font-normal text-[0.8rem]">{{emp.employeeName}}</span>
+                                        <span class="font-normal text-[0.6rem]"> {{emp.completedTaskTime}} </span>
+                                    </div>
+    
+                                    <div class="flex flex-row justify-between p-1 font-normal text-[0.7rem] text-gray-500">
+                                        <span class=" text-gray-500">{{emp.completedTaskDate}}</span>
+                                        <div class="flex h-auto items-center ">
+                                            <img src="../../../assets/downloaded/Ellipse 2352.svg" alt=" img" class="w-2 h-2 "/>
+                                            <span class="  text-gray-500 px-2">Completed Tasks : {{emp.completedTasks}}</span>
+                                        </div>
+                                        <img src="../../../assets/downloaded/Marked as Complete_Small.svg" alt="" class="w-4" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                   </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+
+<mat-divider [vertical]="true" class="mat-divider mat-divider-vertical"></mat-divider>
+<div *ngIf="selectedUser"  class="w-[70%] h-[100%]">
+<div class="flex flex-col  ">
+    <div class="flex flex-row justify-between p-4 m-2 mb-4">
+        <div class="flex flex-col">
+            <p class="font-medium text-[0.9rem]">Employee Name</p>
+            <div class="flex flex-row">
+                <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" class="w-6 h-auto" />
+                <span class="px-2 font-normal text-[0.8rem]" > {{selectedUser.employeeName}}</span> 
+            </div>
+        </div>
+
+        <div class="flex flex-col">
+            <h2 class="font-medium text-[0.9rem]">Employee Id</h2>
+            <span class="font-normal text-[0.8rem]">{{selectedUser.employeeId}}</span>
+        </div>
+
+        <div class="flex flex-col">
+            <h2 class="font-medium text-[0.9rem]">Exit Reason</h2>
+            <span class="font-normal text-[0.8rem]">{{selectedUser.exitReason}}</span>
+        </div>
+
+        <div class="flex flex-col">
+            <h2 class="font-medium text-[0.9rem]">Exit Date</h2>
+            <span class="font-normal text-[0.8rem]">{{selectedUser.exitDate}}</span>
+        </div>
+
+
+    </div>
+    <mat-divider ></mat-divider>
+    <div class="flex flex-col m-2 p-4 ">
+        <div class="flex flex-row justify-between ">
+            <h2 class="font-medium text-[0.9rem]">Tasks</h2>
+
+            <span class="font-normal text-[0.7rem]"><img src="../../../assets/downloaded/Red flag.svg"alt="" class="inline px-2">30 days until last working day</span>
+         
+        </div>
+
+        <div class="my-4">
+
+            <div *ngFor="let task of selectedUser.tasks ; let i = index" class="py-2" > 
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState.set(true)" 
+                                    (closed)="panelOpenState.set(false)"
+                                     (opened)="setPanelState(i, true)" 
+                                     (closed)="setPanelState(i, false)" 
+                                     [ngClass]="selectedPanelIndex===i ? 'panel-active' : 'panel-inactive'">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title><h1 class=" font-medium text-[0.9rem]">Task1: {{task.taskTitle}}</h1> </mat-panel-title>
+                      <mat-panel-description>
+                        <ng-container *ngIf="task.isTaskCompleted ; else notComplted" >
+                          
+                            <div class="flex flex-row px-1 absolute right-20 rounded-md bg-gray-300">
+                                <img src="../../../assets/downloaded/Marked as Complete_Small.svg" alt="" class="inline px-2">
+                                <span class="font-normal text-[0.7rem]">Marked as complete</span>
+                            </div>
+                        </ng-container>
+                        
+                          <ng-template #notComplted>
+                            <div class="flex flex-row px-1 absolute right-20 rounded-md bg-gray-300">
+                                <!-- <img src="../../../assets/downloaded/Marked as Complete_Small.svg" alt="" class="inline px-2"> -->
+                                <span class="font-normal text-[0.7rem]"> Not Competed</span>
+                            </div> 
+                          </ng-template>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <div class="flex flex-col ">
+                    <div class="flex flex-row justify-start  ">
+  
+                      <div class="flex flex-col mr-12">
+                          <h2 class="font-medium text-[0.9rem]">Assigned Department</h2>
+                          <span class="font-normal text-[0.8rem] text-gray-500">{{task.assignedDepartment}}</span>
+                      </div>
+                      <div class="flex flex-col  mr-12">
+                          <h2 class="font-medium text-[0.9rem] "> Assigned to</h2>
+                          <div class="flex flex-row  mr-12">
+                              <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" class="w-6 h-auto" />
+                              <span class="px-2 font-normal text-[0.8rem] text-gray-500" > {{task.assignedTo}}</span> 
+                          </div>
+                      </div>
+              
+                      <div class="flex flex-col ">
+                          <h2 class="font-medium text-[0.9rem]">Exit Date</h2>
+                          <span class="font-normal text-[0.8rem] text-gray-500">{{selectedUser.exitDate}}</span>
+                      </div>
+              
+                      </div>
+  
+                      <div class="flex flex-col mt-2">
+                          <h2 class="font-medium text-[0.9rem] ">Description</h2>
+                          <span class="font-normal text-[0.8rem] text-gray-500"> {{task.description}}</span>
+                      </div>
+                  </div>
+                  </mat-expansion-panel>
+              
+              </mat-accordion>
+              </div>
+        </div>
+       
+    </div>
+    <mat-divider></mat-divider>
+<div class="flex flex-col h-screen max-h-[60vh]  relative ">
+    <div class="p-4 m-2">
+        <h2 class="font-medium text-[0.9rem]">Activity for task 2 </h2>
+        <span class="text-gray-500 flex flex-row text-[0.8rem] justify-center">Today</span>
+
+    </div>
+
+    <div class="flex flex-col p-4 m-2 h-[80%] overflow-y-auto">
+        <div class="flex flex-row">
+            <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" class="w-8">
+            <span class="font-normal text-gray-500 text-[0.8rem] px-2 mt-2"> Eva mendes at 9:30pm</span>
+        </div>
+        <div class="flex flex-row p-2  ml-8 rounded-md bg-gray-300 w-[30%]">
+            <img src="../../../assets/downloaded/Marked as Complete_Small.svg" alt="" class="inline px-2">
+            <span class="font-normal text-[0.8rem]">Marked as complete</span>
+        </div>
+
+
+        <div class="flex flex-row">
+            <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" class="w-8">
+            <span class="font-normal text-gray-500 text-[0.8rem] px-2 mt-2"> Eva mendes at 9:30pm</span>
+        </div>
+        <div class="flex flex-row p-2  ml-8 rounded-md bg-gray-300 w-[30%]">
+            <img src="../../../assets/downloaded/Marked as Complete_Small.svg" alt="" class="inline px-2">
+            <span class="font-normal text-[0.8rem]">Marked as complete</span>
+        </div>
+
+
+        <div class="flex flex-row">
+            <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" class="w-8">
+            <span class="font-normal text-gray-500 text-[0.8rem] px-2 mt-2"> Eva mendes at 9:30pm</span>
+        </div>
+        <div class="flex flex-row p-2  ml-8 rounded-md bg-gray-300 w-[30%]">
+            <img src="../../../assets/downloaded/Marked as Complete_Small.svg" alt="" class="inline px-2">
+            <span class="font-normal text-[0.8rem]">Marked as complete</span>
+        </div>
+
+
+
+        <div class="flex flex-row">
+            <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" class="w-8">
+            <span class="font-normal text-gray-500 text-[0.8rem] px-2 mt-2"> Eva mendes at 9:30pm</span>
+        </div>
+        <div class="flex flex-row p-2  ml-8 rounded-md bg-gray-300 w-[30%]">
+            <img src="../../../assets/downloaded/Marked as Complete_Small.svg" alt="" class="inline px-2">
+            <span class="font-normal text-[0.8rem]">Marked as complete</span>
+        </div>
+
+        <div class="flex flex-row">
+            <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" class="w-8">
+            <span class="font-normal text-gray-500 text-[0.8rem] px-2 mt-2"> Eva mendes at 9:30pm</span>
+        </div>
+        <div class="flex flex-row p-2  ml-8 rounded-md bg-gray-300 w-[30%]">
+            <img src="../../../assets/downloaded/Marked as Complete_Small.svg" alt="" class="inline px-2">
+            <span class="font-normal text-[0.8rem]">Marked as complete</span>
+        </div>
+        
+
+    </div>
+   
+    <div class="  bottom-0  w-full z-100">
+        <mat-divider ></mat-divider>
+        <div class="flex p-4 ">
+        <input 
+        type="text"
+        [(ngModel)]="message"
+        class="p-2  border w-[70%] border-gray-300 text-[0.9rem] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100" 
+        placeholder="type a message here"
+        />
+        <img src="../../../assets/downloaded/Send.svg" alt="" class="mx-2 rounded-full bg-gray-300 p-2" />
+
+        <button class="bg-green-600 text-white  font-normal text-[0.8rem] px-6 rounded-lg ml-8"> <img src="../../../assets/downloaded/Approve.svg"  class="inline"/> Approve </button>
+     </div>
+     </div>
+</div>
+</div>
+</div>
+</div>
+

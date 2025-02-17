@@ -1,0 +1,243 @@
+
+
+
+<div *ngIf="!showAnnualReview ">
+<div *ngIf="!showCreateForm">
+    <div class="flex flex-row">
+        <div class="flex flex-col w-[30%]  ">
+            <div class="relative p-4">
+                <!-- Search Icon inside the input field -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor"
+                    class="absolute left-6 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
+
+                <!-- Search Input -->
+                <input type="text" [(ngModel)]="searchTerm" (keyup)="applyFilter()" placeholder="Search "
+                    class="p-2 pl-10 border w-full border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100" />
+            </div>
+
+            <mat-tab-group (selectedTabChange)="selectedTabValue($event)">
+                <mat-tab label="Ongoing" >
+                   <div class="max-h-[80vh] overflow-y-auto">
+                    <div *ngFor="let review of annualReviews;let i=index" (click)="selectReview(review)">
+                        <div class="flex  hover:bg-gray-100 p-2" (click)="setActiveIndex(i)"
+                            [ngClass]="{ 'active' : activeIndex===i, 'inactive' :activeIndex!=i}">
+                            <div class="flex flex-col w-[100%] p-2">
+                                <div class="flex flex-row justify-between">
+                                    <p class="text-[0.9rem] font-semibold">{{review.title}}</p>
+                                    <span class="text-[0.7rem] font-normal text-gray-500">2:30pm</span>
+                                </div>
+                                <div class="flex flex-row justify-between">
+                                    <div class="flex flex-col font-normal text-[0.8rem] text-gray-500">
+                                        <span class="">Department : {{review.department}}</span>
+                                        <span class="">Total Number of employees :{{review.totalEmployees}}
+                                        </span>
+                                        <span class="">Forms submitted : {{review.formsSubmitted}}</span>
+                                    </div>
+                                    <img src="../../../assets/downloaded/Red flag.svg" alt="" class="w-4" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   </div>
+                </mat-tab>
+                <mat-tab label="History">
+                    <div class="max-h-[80vh] overflow-y-auto">
+                        <div *ngFor="let review of annualReviews;let i=index" (click)="selectReview(review)">
+                            <div class="flex  hover:bg-gray-100 p-2" (click)="setActiveIndex(i)"
+                                [ngClass]="{ 'active' : activeIndex===i, 'inactive' :activeIndex!=i}">
+                                <div class="flex flex-col w-[100%] p-2">
+                                    <div class="flex flex-row justify-between">
+                                        <p class="text-[0.9rem] font-semibold">{{review.title}}</p>
+                                        <span class="text-[0.7rem] font-normal text-gray-500">2:30pm</span>
+                                    </div>
+                                    <div class="flex flex-row justify-between">
+                                        <div class="flex flex-col font-normal text-[0.8rem] text-gray-500">
+                                            <span class="">Department : {{review.department}}</span>
+                                            <span class="">Total Number of employees :{{review.totalEmployees}}
+                                            </span>
+                                            <span class="">Forms submitted : {{review.formsSubmitted}}</span>
+                                        </div>
+                                        <img src="../../../assets/downloaded/Red flag.svg" alt="" class="w-4" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                </mat-tab>
+
+                <mat-tab label="All Forms">
+                   <div class="max-h-[80vh] ">
+                    <div class="p-4">
+                        <div class="flex flex-col border-2 border-gray-300  border-solid rounded-lg ">
+                            <div class="flex flex-row justify-center h-36 items-center w-full">
+                                <img src="../../../assets/downloaded/Create a new form.svg" alt="" />
+                            </div>
+                           <a routerLink="/action-center/performance-reviews/create-form"> <span class="text-blue-500 font-normal text-[1rem] flex py-4 justify-center border-t-2 border-gray-300  border-solid ">
+                                Create a new form</span></a>
+                        </div>
+                    </div>
+                   </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+        <mat-divider [vertical]="true"></mat-divider>
+        <div *ngIf="labelName !== 'All Forms' && selectedReview" class="w-[70%]">
+            <div class="flex flex-col w-[100%]  ">
+                <div class="p-4 m-2">
+                <h2 class="font-medium text-[1.125rem] underline decoration-dashed underline-offset-4">Annual Reviews</h2>
+                <div class="flex  mt-4 justify-between ">
+                    <div class="flex flex-col">
+                        <h2 class="font-medium text-[0.9rem]">Department</h2>
+                        <span class="font-normal text-[0.8rem] text-gray-500">{{selectedReview.department}}</span>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <h2 class="font-medium text-[0.9rem]">Employee Count</h2>
+                        <span class="font-normal text-[0.8rem] text-gray-500">{{selectedReview.totalEmployees}}</span>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <h2 class="font-medium text-[0.9rem]">Forms Submitted</h2>
+                        <span class="font-normal text-[0.8rem] text-gray-500">{{selectedReview.formsSubmitted}}</span>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <h2 class="font-medium text-[0.9rem]">Start date</h2>
+                        <span class="font-normal text-[0.8rem] text-gray-500">{{selectedReview.startDate}}</span>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <h2 class="font-medium text-[0.9rem]">End date</h2>
+                        <span class="font-normal text-[0.8rem] text-gray-500">{{selectedReview.endDate}}</span>
+                    </div>
+                </div>
+                <div class="flex flex-col py-4">
+                    <div class="flex flex-row  ">
+                        <span class="font-medium text-[0.9rem]">Form Attached</span>
+
+                    </div>
+                    <div class="flex flex-row ">
+                        <img src="../../../assets/downloaded/b-icon.svg" alt="" class="p-1" />
+                        <span class="text-blue-500 font-normal text-[0.8rem]">Annual Review 2024 (sales team)</span>
+                    </div>
+                </div>
+                </div>
+                <mat-divider></mat-divider>
+                <div class="flex flex-row justify-start p-4 m-2">
+                    <span class="font-medium text-[0.9rem]"> Responses </span>
+
+                    <div class="flex flex-col justify-center items-center h-96 ml-48">
+
+                        <img src="../../../assets/downloaded/Responses Image.jpg" alt="" class="w-32 h-32 " />
+                        <a (click)="navigateToReviews()">
+                            <p class="text-blue-500 font-normal text-[0.8rem]
+                            underline underline-offset-4">click here to view the responses table</p>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div *ngIf="labelName=== 'History'  && selectedReview" class="w-full  p-2">
+        <div class="flex flex-col  w-full mb-2">
+            <h2 class="font-bold underline">Annual Reviews</h2>
+            <div class="flex flex-row mt-4 justify-between">
+                <div class="flex flex-col">
+                    <h2 class="font-medium">Department</h2>
+                    <span>{{selectedReview.department}}</span>
+                </div>
+    
+                <div class="flex flex-col">
+                    <h2 class="font-medium">Employee Count</h2>
+                    <span>{{selectedReview.totalEmployees}}</span>
+                </div>
+    
+                <div class="flex flex-col">
+                    <h2 class="font-medium">Forms Submitted</h2>
+                    <span>{{selectedReview.formsSubmitted}}</span>
+                </div>
+    
+                <div class="flex flex-col">
+                    <h2 class="font-medium">Start date</h2>
+                    <span>{{selectedReview.startDate}}</span>
+                </div>
+    
+                <div class="flex flex-col">
+                    <h2 class="font-medium">End date</h2>
+                    <span>{{selectedReview.endDate}}</span>
+                </div>
+            </div>
+            <div class="flex flex-col mt-4  mb-4">
+               <div class="flex flex-row  ">
+                <span class="font-bold">form attached</span>
+              
+               </div>
+                <div class="flex flex-row mt-2">
+                    <img src="../../../assets/downloaded/b-icon.svg" alt=""  class="p-1"/>
+                    <span class="text-blue-500 text-sm">Annual Review 2024 (sales team)</span>
+                 </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="flex flex-row justify-evenly -ml-56">
+                <span class="font-bold" > Responses </span>
+    
+                <div class="flex flex-col justify-center items-center h-96 ">
+               
+                    <img src="../../../assets/downloaded/Responses Image.jpg" alt="" class="w-32 h-32 "/>
+                    <a routerLink="/action-center/performance-reviews/annual-reviews"><p class="text-blue-500 text-sm underline" >click here to view the responses table</p></a>
+                  
+                </div>
+            </div>
+        </div>
+       </div> -->
+
+        <div *ngIf="labelName === 'All Forms'" class=" w-[70%] ">
+            <div class="flex flex-col mt-6 ">
+                <span class="font-medium text-[1.125rem] ml-4">All Forms</span>
+
+                <div class="-mx-4 -my-2 overflow-x-auto sm: -mx-6 lg: -mx-8 mt-6 px-4">
+                    <div class="inline-block min-w-full py-2 align-middle sm: px-6 lg:px-8">
+                        <div class="overflow-hidden rounded-lg">
+                            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                                <ng-container matColumnDef="formName">
+                                    <th mat-header-cell *matHeaderCellDef>Form Name</th>
+                                    <td mat-cell *matCellDef="let element"><img
+                                            src="../../../assets/downloaded/b-icon.svg" alt="" class="inline" />
+                                        {{element.formName}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="createdOn">
+                                    <th mat-header-cell *matHeaderCellDef>Created On</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.createdOn }} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="Action">
+                                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                                    <td mat-cell *matCellDef="let element"> <img
+                                            src="../../../assets/HR Policies Assets/Icons/Delete.svg " alt="" /></td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235 )'" class="hover:bg-blue-100" *matRowDef="let row;columns: displayedColumns;"></tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+<app-create-form *ngIf="showCreateForm"></app-create-form>
+
+<app-annual-reviews *ngIf="showAnnualReview" [selectedReview]="selectedReview"></app-annual-reviews>

@@ -1,0 +1,131 @@
+<div class="flex flex-col">
+    <div class="flex flex-col">
+        <div class="flex justify-between">
+            <h2 class="font-bold">Initiate Exit Task</h2>
+            <button mat-icon-button class="mat-dialog-close" mat-dialog-close><mat-icon>close</mat-icon></button>
+        </div>
+        <span class="text-sm text-gray-500 -my-4">Create an exit task for an employee and assign it to necessary team </span>
+    </div>
+
+    <div class="flex flex-col -mx-6 mt-4 exit-task-form">
+        <mat-dialog-content class="mat-typograpghy">
+            <form [formGroup]="exitTaskForm" class=" flex flex-col form-group">
+                <div class="flex flex-col gap-2">
+                    <div class="flex justify-between gap-4">
+
+                        <mat-form-field appearance="outline" class="custom-form-field">
+                            <mat-label>Employee Name</mat-label>
+                            <mat-select formControlName="employeeName">
+                                <mat-option *ngFor="let item of sampleData; let i = index" [value]="item.employeeName">
+                                    {{item.employeeName}} </mat-option>
+                            </mat-select>
+                            <mat-error>
+                                <span
+                                    *ngIf="exitTaskForm.get('employeeName')?.touched && exitTaskForm.get('employeeName')?.invalid">
+                                    <span *ngIf="exitTaskForm.get('employeeName')?.errors?.['required']"> This field is
+                                        required</span>
+                                </span>
+
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" class="custom-form-field">
+                            <mat-label>Exit Reason</mat-label>
+                            <mat-select formControlName="exitReason">
+                                <mat-option *ngFor="let item of sampleData; let i = index" [value]="item.exitReason">
+                                    {{item.exitReason}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error>
+                                <span
+                                    *ngIf="exitTaskForm.get('exitReason')?.touched && exitTaskForm.get('exitReason')?.invalid">
+                                    <span *ngIf="exitTaskForm.get('exitReason')?.errors?.['required']"> This field is
+                                        required</span>
+                                </span>
+
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Exit date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="exitDate">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="exitTaskForm.get('exitDate')?.touched && exitTaskForm.get('exitDate')?.invalid">
+                          Exit date is required.
+                        </mat-error>
+                    </mat-form-field>
+
+
+
+                    <div formArrayName="tasks">
+                        <div *ngFor="let task of tasks.controls; let i = index" [formGroupName]="i" class="gap-4">
+                          <mat-form-field appearance="outline" class="w-full">
+                            <mat-label>Task Title</mat-label>
+                            <input matInput formControlName="taskTitle" required />
+                            <mat-error *ngIf="task.get('taskTitle')?.touched && task.get('taskTitle')?.invalid">
+                              Task Title is required.
+                            </mat-error>
+                          </mat-form-field>
+                      
+                          <mat-form-field appearance="outline" class="w-full py-1">
+                            <mat-label>Task Description</mat-label>
+                            <input matInput formControlName="taskDescription" required />
+                            <mat-error *ngIf="task.get('taskDescription')?.touched && task.get('taskDescription')?.invalid">
+                              Task Description is required.
+                            </mat-error>
+                          </mat-form-field>
+                      
+                          <div class="flex justify-between gap-4 py-1">
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                              <mat-label>Assign Department</mat-label>
+                              <mat-select formControlName="assignedDepartment" required>
+                                <mat-option *ngFor="let item of sampleData" [value]="item.assignedDepartment">
+                                  {{ item.assignedDepartment }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="task.get('assignedDepartment')?.touched && task.get('assignedDepartment')?.invalid">
+                                Assigned Department is required.
+                              </mat-error>
+                            </mat-form-field>
+                      
+                            <mat-form-field appearance="outline" class="custom-form-field">
+                              <mat-label>Assigned Employee</mat-label>
+                              <mat-select formControlName="assignedEmployee" required>
+                                <mat-option *ngFor="let item of sampleData" [value]="item.assignedEmployee">
+                                  {{ item.assignedEmployee }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="task.get('assignedEmployee')?.touched && task.get('assignedEmployee')?.invalid">
+                                Assigned Employee is required.
+                              </mat-error>
+                            </mat-form-field>
+                          </div>
+                      
+                          <button mat-button (click)="removeTask(i)">Remove Task</button>
+                        </div>
+                      </div>
+                      
+                </div>
+
+        
+          <button  class="flex justify-start text-blue-600 underline decoration-dashed underline-offset-4" (click)="addAnotherTask()">+ add another task</button>
+      
+
+      
+          
+          <button  type="submit" class="flex justify-end ml-auto  text-[0.8rem] bg-[#03B877] p-2 px-6 text-white rounded-md" (click)="handleSubmit()"
+             mat-dialog-close [disabled]="!(exitTaskForm.valid && exitTaskForm.dirty)">
+              Save
+          </button>
+            </form>
+
+
+        </mat-dialog-content>
+
+    
+       
+    </div>
+</div>

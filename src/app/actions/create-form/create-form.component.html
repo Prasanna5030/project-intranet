@@ -1,0 +1,117 @@
+<div class=" bg-gray-100 h-auto">
+  <div class="  ">
+    <!-- <div class="col">
+       <h2 class="flex text-xl font-medium text-gray-800 dark:text-black row items-center gap-2 " >Action Center</h2>
+       <p class="mt-1 text-sm  dark:text-gray-500 font-inter">Welcome to the action center where you can take actions such as managing HR tasks and other HR adminstrative duties</p>
+    </div>
+     -->
+   <div class=" flex bg-white  my-4 p-6  overflow-y-auto">
+    <div class=" w-[60%]  relative">
+     <div class="flex  items-center"> 
+      <a class="cursor-pointer" (click)="goBack()"><svg width="7" height="10" viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5.66699 0.834635L1.50033 5.0013L5.66699 9.16797" stroke="#1C1C1C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg></a>
+      <span class="font-bold px-2"> Create Form</span>
+     </div>
+       <div class="relative h-screen overflow-y-auto">
+        <form [formGroup]="form" class="mt-4  relative" >
+
+          <mat-card class="mat-card-container custom-card">
+          
+                <mat-form-field appearance="fill" class="custom-form-fleld">
+                <mat-label>Untitled Form</mat-label>
+                <input matInput formControlName="title" placeholder="Untitled Form"  >
+             </mat-form-field>
+             </mat-card>
+      
+             
+           
+             <div formArrayName="questions"  class=""> 
+              <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i" class="question-container">
+                <mat-card class="mat-card-container " >
+                  <div class="flex justify-between items-center">
+                   <mat-form-field appearance="fill" class="custom-form-fleld ">
+                   <mat-label>Untitled Question</mat-label>
+                  <input matInput formControlName="text" placeholder="Untitled Question" >
+                 </mat-form-field>
+                 <button mat-icon-button color="warn" class="inline" (click)="removeQuestion(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                </div>
+              <!-- Answer Type Radio Buttons -->
+              <div class="absolute bottom-0 z-100  ">
+                <mat-label></mat-label>
+                <mat-radio-group formControlName="type" class="answer-type-radio-group flex gap-6 " >
+                  <mat-radio-button value="shortAnswer">Short Answer</mat-radio-button>
+                  <mat-radio-button value="checkbox">Checkbox</mat-radio-button>
+                  <mat-radio-button value="radio">Radio Button</mat-radio-button>
+                </mat-radio-group>
+              </div>
+      
+              <div *ngIf="question.get('type')?.value === 'shortAnswer'" >
+                <mat-form-field appearance="fill" class="custom-form-fleld">
+                  <input matInput formControlName="shortAnswer" placeholder="Short Answer"  />
+                </mat-form-field>
+                </div>
+              <!-- Options Section (only for checkbox and radio types) -->
+              <div *ngIf="question.get('type')?.value === 'checkbox' || question.get('type')?.value === 'radio'" class="py-6">
+                <div formArrayName="options">
+                  <div *ngFor="let option of getOptions(i).controls; let j = index" [formGroupName]="j" class="option-item">
+                    <!-- Dynamically Render Input Type Based on Selected Type -->
+                    <mat-checkbox *ngIf="question.get('type')?.value === 'checkbox'" [checked]="false">
+                      <mat-form-field appearance="fill" class="custom-form-field">
+                        <input matInput formControlName="value" placeholder="Option {{ j + 1 }}" class="bg-white">
+                      </mat-form-field>
+                    </mat-checkbox>
+                    <mat-radio-button *ngIf="question.get('type')?.value === 'radio'" [checked]="false">
+                      <mat-form-field appearance="fill" class="custom-form-field">
+                        <input matInput formControlName="value" placeholder="Option {{ j + 1 }}"  class="bg-white"/>
+                      
+                      </mat-form-field>
+                    </mat-radio-button>
+                    <button mat-icon-button color="warn" class="inline" (click)="removeOption(i, j)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <button mat-stroked-button color="primary" (click)="addOption(i)">+ Add another option</button>
+              </div>
+            
+                </mat-card>
+            </div>
+          </div>
+     
+     
+        </form>
+
+       </div>
+       <div class=" bottom-[20%]  px-6">
+        <div class="flex justify-between">
+          <button mat-raised-button color="primary" (click)="addQuestion()">+ Add Question</button>
+          <div class="">
+            <button type="reset" (click)="onReset(form)" class="text-[0.8rem] px-6 p-2 rounded-md">
+              Cancel
+            </button>
+            <button type="submit" class="p-2 px-6 bg-green-500 text-white rounded-md text-[0.8rem]" (click)="saveForm(form)">Save</button>
+
+          </div>
+        </div>
+        </div>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    
+    <div class="flex flex-col p-2">
+      <span class="font-bold"> Reference Questions</span>
+      <div class="flex flex-col p-2">
+      
+        <div *ngFor="let item of reviews; let i = index" class="flex flex-row h-auto items-center p-2">
+          <div class="bg-blue-500 rounded-lg w-1 h-1 mr-2"></div>
+          <span class="text-sm text-gray-600">{{ item.question }}</span>
+        </div>
+      </div>
+    </div>  
+</div>
+
+</div>
+</div>
+

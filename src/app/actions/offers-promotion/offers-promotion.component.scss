@@ -1,0 +1,23 @@
+.sticky-div {
+      position: sticky;
+      bottom: 10px; /* Distance from the top of the container */
+      right:10px;
+      z-index: 100; /* Ensure it appears above other content */
+      background-color: #007bff;
+      color: white;
+      border: none;
+     padding: 10px 15px;
+      //cursor: pointer;
+    }
+
+
+    
+.active {
+  border : 1px solid rgb(14 165 233);
+  border-radius: 10px;
+  
+}
+
+.inactive {
+
+}

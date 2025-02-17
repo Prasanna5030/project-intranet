@@ -1,0 +1,21 @@
+.clear-btn, .search-btn{
+    position: absolute;
+    top: 50%;
+    
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+} 
+
+
+.clear-btn {
+    top: 65%;
+    left:19%;
+  }
+
+  .search-btn {
+   
+    left:25%;
+  }

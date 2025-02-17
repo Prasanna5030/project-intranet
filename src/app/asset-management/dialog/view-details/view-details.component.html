@@ -1,0 +1,101 @@
+<div class="m-2">
+    <div class=" flex  justify-between ">
+        <div class="py-2">
+            <h1 class="font-semibold text-[1.125rem]">View Details</h1>
+            <span class="font-normal text-[0.9rem] text-gray-500" > View the asset details below to review and verify information</span>
+        </div>
+        <button mat-icon-button mat-dialog-close> <mat-icon>close</mat-icon></button>
+    </div>
+
+    <div class="flex w-full justify-start gap-4 py-4">
+        <div class="flex flex-col w-[25%]">
+            <span class="font-medium text-[0.9rem]">Asset Category</span>
+            <span class="font-normal text-[0.8rem] text-gray-500">{{asset.assetCategory}}</span>
+        </div>
+
+        <div class="flex flex-col w-[25%]">
+            <span class="font-medium text-[0.9rem]">Asset Id</span>
+            <span class="font-normal text-[0.8rem] text-gray-500">{{asset.assetId}}</span>
+        </div>
+
+        <div class="flex flex-col w-[25%]">
+            <span class="font-medium text-[0.9rem]">Purchase Date</span>
+            <span class="font-normal text-[0.8rem] text-gray-500">{{asset.purchaseDate}}</span>
+        </div>
+
+        <div class="flex flex-col w-[25%]">
+            <span class="font-medium text-[0.9rem]">Cost</span>
+            <span class="font-normal text-[0.8rem] text-gray-500">{{asset.cost}}</span>
+        </div>
+
+    </div>
+
+    <div class="flex w-full justify-start  gap-4 py-4">
+        <div class="flex flex-col w-[25%]">
+            <span class="font-medium text-[0.9rem]">WarrentyExpiry Date</span>
+            <span class="font-normal text-[0.8rem] text-gray-500">{{asset.warrenty}}</span>
+        </div>
+
+        <div class="flex flex-col w-[25%]">
+            <span class="font-medium text-[0.9rem]">Current Assignee</span>
+            <span class="font-normal text-[0.8rem] text-gray-500">{{asset.assignee}}</span>
+        </div>
+
+        <div class="flex flex-col w-[25%]">
+            <span class="font-medium text-[0.9rem]">Assigned On</span>
+            <span class="font-normal text-[0.8rem] text-gray-500">{{asset.assignee}}</span>
+        </div>
+
+        <div class="flex flex-col w-[25%]">
+            <span class="font-medium text-[0.9rem]">Previous Assignee</span>
+            <span class="font-normal text-[0.8rem] text-gray-500">{{asset.previousAssignee}}</span>
+        </div>
+
+    </div>
+
+    <div class="py-2">
+        <h2 class="mb-2 font-semibold text-[0.9rem]">Asset Related Images</h2>
+        <div class="flex flex-wrap gap-2 h-32 border-2 border-solid  border-grey-500 rounded-lg">
+            <div class="flex gap-2 p-2">
+                <img src="../../../../assets/Employees Assets/Image.png" alt="" class="w-48 h-28" />
+                <img src="../../../../assets/Employees Assets/Image.png" alt="" class="w-48 h-28" />
+            </div>
+        </div>
+    </div>
+
+    <div class="">
+        <h2 class="mb-2 font-semibold text-[0.9rem]">Usage History</h2>
+        <div class="flex flex-col gap-2">
+            <table mat-table [dataSource]="assetUsageHistory" class="mat-elevation-z8 ">
+                
+                <ng-container matColumnDef="employeeId">
+                    <th mat-header-cell *matHeaderCellDef>EmployeeId</th>
+                    <td mat-cell *matCellDef="let element">{{element.employeeId}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="employeeName">
+                    <th mat-header-cell *matHeaderCellDef>EmployeeName</th>
+                    <td mat-cell *matCellDef="let element">{{element.employeeName}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="department">
+                    <th mat-header-cell *matHeaderCellDef>Department</th>
+                    <td mat-cell *matCellDef="let element">{{element.department}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="assignedOn">
+                    <th mat-header-cell *matHeaderCellDef>AssignedOn</th>
+                    <td mat-cell *matCellDef="let element">{{element.assignedOn}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="returnedOn">
+                    <th mat-header-cell *matHeaderCellDef>ReturnedOn</th>
+                    <td mat-cell *matCellDef="let element">{{element.returnedOn}}</td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr [style.border-bottom] = "'2px solid rgb(229 231 234)' "mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+</div>

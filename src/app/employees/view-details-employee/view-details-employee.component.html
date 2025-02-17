@@ -1,0 +1,432 @@
+<div class="py-8 px-[3%] h-auto">
+    <div class="flex">
+        <div class="relative">
+
+            <div class="flex ">
+                <a class="cursor-pointer absolute top-[15%] left-0" (click)="goBack()"><svg width="7" height="10"
+                        viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.66699 0.834635L1.50033 5.0013L5.66699 9.16797" stroke="#1C1C1C" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg></a>
+
+                <div class=" px-6 flex  items-center h-auto  gap-4">
+                    <div class="relative">
+                        <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" class="h-16 w-16" />
+                        <img src="../../../assets/Employees Assets/Icon/Ellipse 2325.svg" alt="" class="absolute right-0 top-12" />
+                    </div>
+                    <div class="flex flex-col h-auto ">
+                        <h1 class=" font-bold text-[1.25rem]">Jane Cooper</h1>
+                        <div class="flex h-auto items-center gap-2">
+                            <span class=" font-bold text-[1rem] text-gray-500"> Team Lead </span><div
+                                class="h-1 w-1 bg-gray-500 rounded-full inline-block "> </div> 
+                                <span  class="font-bold text-[1rem] text-gray-500"> UI/UX Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="py-6">
+
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Overview">
+            <div class="flex flex-col py-8 px-8 w-full gap-4">
+                <div class="flex w-full gap-4">
+                    <input type="text" placeholder="Send a quick note to their Official chat Id" [(ngModel)]="quickNote"
+                        class="w-[95%] p-3 border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-300" />
+
+                    <img src="../../../assets/Employees Assets/Icon/Send.svg" alt="" class="inline  w-10 h-10 m-2  "
+                        (click)="sendQuickNote()" />
+                </div>
+
+                <button class="flex justify-end text-blue-500  underline decoration-dotted underline-offset-4">
+                    <img src="../../../assets/Employees Assets/Icon/Edit_Pencil_01.svg" alt="" class="inline " />
+                    <span class="text-blue-500 ">Edit Details</span>
+                </button>
+
+                <div class="bg-white rounded-3xl w-full h-auto p-8">
+                    <div class="flex flex-col gap-6">
+                        <h1 class="font-bold text-[1.25rem]"> Contact Information</h1>
+                        <div class="flex justify-start">
+                            <div class="flex w-[60%]">
+                                <img src="../../../assets/Employees Assets/Icon/Mail.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Offical Mail</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> jane.cooper&#64;dsquareconsultancy.com </span>
+                                </div>
+                            </div>
+
+                            <div class="flex w-[40%]">
+                                <img src="../../../assets/Employees Assets/Icon/Mail.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Personal Mail</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> jane.cooper&#64;dsquareconsultancy.com </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-start">
+                            <div class="flex w-[60%]">
+                                <img src="../../../assets/Employees Assets/Icon/Phone.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Offical Phone</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> +91 9392910101 </span>
+                                </div>
+                            </div>
+
+                            <div class="flex w-[30%]">
+                                <img src="../../../assets/Employees Assets/Icon/Phone.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Personal Phone</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> +91 7291017380 </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-start">
+                            <div class="flex w-[60%]">
+                                <img src="../../../assets/Employees Assets/Icon/Personal Address.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Personal Address</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> #27, 4th main, 7th cross, Shreyas Layout,
+                                        Jayanagar, Banglore - 560078 </span>
+                                </div>
+                            </div>
+
+                            <div class="flex w-[40%]">
+                                <img src="../../../assets/Employees Assets/Icon/Chat.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Chat</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> live:cid.f12gf2kda002b861 </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <mat-divider></mat-divider>
+
+                        <h1 class="font-bold text-xl"> Additional Information</h1>
+                        <div class="flex justify-start">
+                            <div class="flex w-[60%]">
+                                <img src="../../../assets/Employees Assets/Icon/Designation & Department.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Designation</h2>
+                                    <span class="font-normal text-[1rem]  text-blue-500"> Frontend Developer </span>
+                                </div>
+                            </div>
+
+                            <div class="flex w-[30%]">
+                                <img src="../../../assets/Employees Assets/Icon/Designation & Department.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Department</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> IT </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-start">
+                            <div class="flex w-[60%]">
+                                <img src="../../../assets/Employees Assets/Icon/Team.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Team</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> UX Designer </span>
+                                </div>
+                            </div>
+
+                            <div class="flex w-[30%]">
+                                <img src="../../../assets/Employees Assets/Icon/Reporting Manager.svg" alt=""
+                                    class="flex h-auto items-center mr-6 w-8 h-8" />
+                                <div class="flex flex-col">
+                                    <h2 class="font-semibold text-[1rem] text-gray-500">Reporting Manager</h2>
+                                    <span class="font-normal text-[1rem] text-blue-500"> Raghavendra B.C </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <mat-divider></mat-divider>
+
+                        <h1 class="font-bold text-xl"> KYC Documents</h1>
+                        <div class="flex gap-4">
+                            <div class="w-[50%] flex justify-between p-2 bg-gray-100 rounded-md">
+                                <span class="text-sm"> aadhar.pdf </span>
+                                <img src="../../../assets/Employees Assets/Icon/Download.svg" alt="" />
+                            </div>
+
+                            <div class="w-[50%] flex justify-between p-2 bg-gray-100 rounded-md">
+                                <span class="text-sm"> pan.pdf </span>
+                                <button> <img src="../../../assets/Employees Assets/Icon/Download.svg" alt="" />
+                                </button>
+                            </div>
+                        </div>
+
+                        <mat-divider></mat-divider>
+
+                        <h1 class="font-bold text-xl"> Additional Documents</h1>
+                        <div class="flex flex-col gap-4">
+                            <div class=" flex justify-between p-2 bg-gray-100 rounded-md">
+                                <span class="text-sm"> pan.pdf </span>
+                                <button> <img src="../../../assets/Employees Assets/Icon/Download.svg" alt="" />
+                                </button>
+                            </div>
+                        </div>
+
+                        <h1 class="text-xl font-bold"> Assets </h1>
+                        <div class="flex justify-between gap-4">
+                            <div class="flex bg-gray-100 w-[50%] justify-between p-2 rounded-md">
+                                <div class="">
+                                    <img src="../../../assets/Employees Assets/Icon/Asset.svg" alt=""
+                                        class="inline mr-8" />
+                                    <span class="text-sm text-gray-500">Laptop</span>
+                                </div>
+                                <div class="">
+                                    <span class="text-sm text-gray-500">Asset ID : lap12034</span>
+                                </div>
+                            </div>
+
+                            <div class="flex bg-gray-100 w-[50%] justify-between p-2 rounded-md">
+                                <div class="">
+                                    <img src="../../../assets/Employees Assets/Icon/SIM.svg" alt=""
+                                        class="inline mr-8" />
+                                    <span class="text-sm text-gray-500">Sim</span>
+                                </div>
+                                <div class="">
+                                    <span class="text-sm text-gray-500">Asset ID : sim19820</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <mat-divider></mat-divider>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Organisation Tree">
+
+            <div class="flex h-auto w-full">  
+                <div class="tree">
+                    <ul>
+                        <ng-container *ngFor="let node of empTreeData">
+                            <li>
+                                <div class="node">
+                                    {{ node.name }}<br>
+                                    <small>{{ node.title }}</small>
+                                </div>
+                                <ul *ngIf="node.children?.length">
+                                    <ng-container
+                                        *ngTemplateOutlet="renderNodes; context: { $implicit: node.children }"></ng-container>
+                                </ul>
+                            </li>
+                        </ng-container>
+                    </ul>
+
+                    <!-- Recursive Template -->
+                    <ng-template #renderNodes let-children>
+                        <li *ngFor="let child of children">
+                            <div class="node">
+                                {{ child.name }}<br>
+                                <small>{{ child.title }}</small>
+                            </div>
+                            <ul *ngIf="child.children?.length">
+                                <ng-container
+                                    *ngTemplateOutlet="renderNodes; context: { $implicit: child.children }"></ng-container>
+                            </ul>
+                        </li>
+                    </ng-template>
+                </div>
+            </div>
+
+
+
+        </mat-tab>
+        <mat-tab label="Documents">
+            <div class="py-8 px-8 w-full h-auto">
+                <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+                    <mat-tab label="Review Letter">
+                        <div class="review-letters ">
+                            <table mat-table [dataSource]="empDocments.reviews" class="mat-elevation-z8" >
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="uploadedOn">
+                                    <th mat-header-cell *matHeaderCellDef>UploadedOn</th>
+                                    <td mat-cell *matCellDef="let element">{{element.uploadedOn}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="size">
+                                    <th mat-header-cell *matHeaderCellDef>Size</th>
+                                    <td mat-cell *matCellDef="let element">{{element.size}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <img src="../../../assets/HR Policies Assets/Icons/Delete.svg" alt="" />
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235)'" class="hover:bg-blue-100" *matRowDef="let row;columns : displayedColumns;"></tr>
+                                </table>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Pay Slip">
+                        <div class="pay-slip ">
+                            <table mat-table [dataSource]="empDocments.payslip" class="mat-elevation-z8" >
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="uploadedOn">
+                                    <th mat-header-cell *matHeaderCellDef>UploadedOn</th>
+                                    <td mat-cell *matCellDef="let element">{{element.uploadedOn}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="size">
+                                    <th mat-header-cell *matHeaderCellDef>Size</th>
+                                    <td mat-cell *matCellDef="let element">{{element.size}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <img src="../../../assets/HR Policies Assets/Icons/Delete.svg" alt="" />
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235)'" class="hover:bg-blue-100" *matRowDef="let row;columns : displayedColumns;"></tr>
+                                </table>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Form 16">
+                        <div class="form-16 ">
+                            <table mat-table [dataSource]="empDocments.form16" class="mat-elevation-z8" >
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="uploadedOn">
+                                    <th mat-header-cell *matHeaderCellDef>UploadedOn</th>
+                                    <td mat-cell *matCellDef="let element">{{element.uploadedOn}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="size">
+                                    <th mat-header-cell *matHeaderCellDef>Size</th>
+                                    <td mat-cell *matCellDef="let element">{{element.size}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <img src="../../../assets/HR Policies Assets/Icons/Delete.svg" alt="" />
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235)'" class="hover:bg-blue-100" *matRowDef="let row;columns : displayedColumns;"></tr>
+                                </table>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Insurance">
+
+                        <div class="insurance ">
+                            <table mat-table [dataSource]="empDocments.insurance" class="mat-elevation-z8" >
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="uploadedOn">
+                                    <th mat-header-cell *matHeaderCellDef>UploadedOn</th>
+                                    <td mat-cell *matCellDef="let element">{{element.uploadedOn}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="size">
+                                    <th mat-header-cell *matHeaderCellDef>Size</th>
+                                    <td mat-cell *matCellDef="let element">{{element.size}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <img src="../../../assets/HR Policies Assets/Icons/Delete.svg" alt="" />
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235)'" class="hover:bg-blue-100" *matRowDef="let row;columns : displayedColumns;"></tr>
+                                </table>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Declaration Form">
+
+                        <div class="Declaration-forms">
+                            <table mat-table [dataSource]="empDocments.declarationForm" class="mat-elevation-z8" >
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="uploadedOn">
+                                    <th mat-header-cell *matHeaderCellDef>UploadedOn</th>
+                                    <td mat-cell *matCellDef="let element">{{element.uploadedOn}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="size">
+                                    <th mat-header-cell *matHeaderCellDef>Size</th>
+                                    <td mat-cell *matCellDef="let element">{{element.size}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <img src="../../../assets/HR Policies Assets/Icons/Delete.svg" alt="" />
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235)'" class="hover:bg-blue-100" *matRowDef="let row;columns : displayedColumns;"></tr>
+                                </table>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Reimbursement">
+                        <div class="reimbursement ">
+                            <table mat-table [dataSource]="empDocments.reimbursement" class="mat-elevation-z8" >
+                                <ng-container matColumnDef="name">
+                                    <th mat-header-cell *matHeaderCellDef>Name</th>
+                                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="uploadedOn">
+                                    <th mat-header-cell *matHeaderCellDef>UploadedOn</th>
+                                    <td mat-cell *matCellDef="let element">{{element.uploadedOn}}</td>
+                                </ng-container>
+                                <ng-container matColumnDef="size">
+                                    <th mat-header-cell *matHeaderCellDef>Size</th>
+                                    <td mat-cell *matCellDef="let element">{{element.size}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="action">
+                                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <img src="../../../assets/HR Policies Assets/Icons/Delete.svg" alt="" />
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235)'" class="hover:bg-blue-100" *matRowDef="let row;columns : displayedColumns;"></tr>
+                                </table>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+
+        </mat-tab>
+    </mat-tab-group>
+</div>

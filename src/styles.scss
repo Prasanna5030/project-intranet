@@ -1,1 +1,244 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file and also import other style files */
+
+@use "@angular/material" as mat;
+
+@import "../node_modules/@angular/material/prebuilt-themes/azure-blue.css";
+// Import Google Fonts for Material Icons
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+// Import Tailwind CSS styles
+@import "./app/styles/tailwind.scss";
+
+// @include mat.core();
+
+// // $theme: mat.define-theme((
+// //   color: (
+// //     theme-type: light,
+// //     primary: mat.$violet-palette,
+// //   ),
+// //   typography: (
+// //     brand-family: 'Comic Sans',
+// //     bold-weight: 900
+// //   ),
+// //   density: (
+// //     scale: -1
+// //   )
+// // ));
+
+// $custom-theme:mat.define-theme(
+// (
+//     color:(
+//         // theme-type:light,
+//         // primary:mat.$violet-palette,
+//         use-system-variables:true
+//     ),
+// )
+
+// );
+
+// html{
+
+//     @include mat.core-theme($custom-theme);
+//     @include mat.all-component-themes($custom-theme);
+
+// }
+
+body {
+    font-family: "Inter", sans-serif; /* Use the imported font */
+  }
+
+.inter-text {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400px;
+    font-style: normal;
+  }
+
+
+
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.tabs-overrides((
+    active-focus-label-text-color:rgb(59 130 246),
+    active-indicator-color: rgb(59 130 246),
+    
+  ));
+}
+
+
+
+:root {
+  @include mat.divider-overrides((
+    color: rgb(222, 219, 219),
+  ));
+}
+
+
+:root {
+  @include mat.table-overrides((
+    background-color: rgb(255, 255, 255),
+    header-headline-color: rgb(111, 107, 107),
+    header-headline-weight: bold
+  ));
+
+  --mat-select-panel-background-color: white;
+ 
+  --mat-table-row-item-container-height:60px;
+
+  --mat-expansion-container-shape : 5px;
+
+   .mat-mdc-header-row{
+    background: none;
+    background-color: #FAFAFA;
+    height: 52px;
+  }
+
+}
+
+
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+    border-color: rgb(220, 218, 215) !important;
+  }
+
+  .black-snackbar {
+    background-color: black !important;
+    color: white !important;
+  }
+  
+  .green-snackbar {
+    background-color: green !important;
+    color: white !important;
+  }
+
+
+// Base Layer for Border Style
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-style: none;
+  }
+}
+
+// Active Class
+// .active {
+//   background-color: black;
+//   color: white;
+//   border-radius: 0.375rem;
+// }
+
+// Flexbox Layouts
+.col {
+  @apply flex flex-col;
+}
+
+.row {
+  @apply flex flex-row;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// White Box with Shadow
+.white-box {
+  @apply bg-white rounded-lg shadow-lg md:w-1/2 w-full divide-y-2;
+}
+
+// Card Header Font
+.card_head_font {
+  @apply font-medium;
+}
+
+// Main Heading Style
+.main_heading {
+  @apply text-[1.125rem] font-semibold ;
+}
+
+// Global Styles
+html,
+body {
+  height: 100%;
+}
+
+// body {
+//   margin: 0;
+//   font-family: Roboto, "Helvetica Neue", sans-serif;
+// }
+
+// General Scrollbar Styles
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+// Track
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+// Handle
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+// Handle on Hover
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+// Remove Up and Down Arrows
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+// For Firefox
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+// Custom Scrollbar for Specific Elements
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+}

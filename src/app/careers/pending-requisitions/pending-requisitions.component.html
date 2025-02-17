@@ -1,0 +1,541 @@
+<div>
+  <!-- Total Number of Assets and Items Per Page in the Same Row -->
+  <div class="flex justify-end items-center mt-6">
+    <div class="flex items-center space-x-2">
+      <span class="text-sm text-gray-600">Rows Per Page</span>
+      <select
+        [(ngModel)]="pageSize"
+        (change)="onPageSizeChange(pageSize)"
+        class="p-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
+      >
+        <option [value]="5">5</option>
+        <option [value]="10">10</option>
+        <option [value]="25">25</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Table Section -->
+  <div
+    class="overflow-x-auto mt-6 bg-white border border-gray-100 border-solid shadow-md rounded-sm"
+  >
+    <table class="min-w-full table-auto">
+      <thead class="bg-gray-50 sticky top-0 z-10">
+        <tr>
+          <th
+            *ngFor="let column of columns"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap"
+          >
+            {{ column.header }}
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of paginatedData; trackBy: trackByFn">
+          <!-- Job Title -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="text-sm text-gray-900">{{ element.jobTitle }}</span>
+          </td>
+
+          <!-- Experience -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="text-sm text-gray-900">{{ element.experience }}</span>
+          </td>
+
+          <!-- Manager ID -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="text-sm text-gray-900">{{ element.managerId }}</span>
+          </td>
+
+          <!-- Manager Name with Image -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="flex items-center">
+              <img
+                [src]="element.managerImage"
+                [alt]="element.managerName"
+                class="h-8 w-8 rounded-full object-cover mr-3"
+              />
+              <span class="text-sm text-gray-900">{{
+                element.managerName
+              }}</span>
+            </div>
+          </td>
+
+          <!-- Requisition Date -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <span class="text-sm text-gray-900">{{
+              element.requisitionDate
+            }}</span>
+          </td>
+
+          <!-- Priority -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 512 512"
+              [ngClass]="{
+                'text-green-500': element.priority === 'high',
+                'text-yellow-500': element.priority === 'medium',
+                'text-red-500': element.priority === 'low'
+              }"
+              class="inline-block w-5 h-5"
+            >
+              <path
+                fill="currentColor"
+                d="M80 480a16 16 0 0 1-16-16V68.13a24 24 0 0 1 11.9-20.72C88 40.38 112.38 32 160 32c37.21 0 78.83 14.71 115.55 27.68C305.12 70.13 333.05 80 352 80a183.8 183.8 0 0 0 71-14.5a18 18 0 0 1 25 16.58v219.36a20 20 0 0 1-12 18.31c-8.71 3.81-40.51 16.25-84 16.25c-24.14 0-54.38-7.14-86.39-14.71C229.63 312.79 192.43 304 160 304c-36.87 0-55.74 5.58-64 9.11V464a16 16 0 0 1-16 16"
+              />
+            </svg>
+          </td>
+
+          <!-- Status -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="relative inline-flex items-center">
+              <span
+                class="absolute left-2 w-1.5 h-1.5 rounded-full"
+                [ngClass]="{
+                  'bg-yellow-500': element.status === 'Pending',
+                  'bg-green-500': element.status === 'Approve',
+                  'bg-red-500': element.status === 'Reject'
+                }"
+              ></span>
+              <select
+                [(ngModel)]="element.status"
+                (change)="onStatusChange(element, $event)"
+                [ngClass]="{
+                  'bg-yellow-100 text-yellow-600': element.status === 'Pending',
+                  'bg-green-100 text-green-600': element.status === 'Approve',
+                  'bg-red-100 text-red-600': element.status === 'Reject'
+                }"
+                class="appearance-none pl-6 pr-8 py-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+              >
+                <option value="Pending">Pending</option>
+                <option value="Approve">Approve</option>
+                <option value="Reject">Reject</option>
+              </select>
+              <div class="absolute right-2 pointer-events-none">
+                <svg
+                  class="w-4 h-4 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </td>
+
+          <!-- Actions -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <button
+              (click)="openModal(element)"
+              class="text-gray-500 hover:text-gray-700 transition-colors duration-200"
+              title="View Details"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 4H4v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M9 15L20 4m-5 0h5v5"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Page navigation controls -->
+    <div class="flex items-center px-6 py-4 bg-white">
+      <div class="flex-1 flex justify-between sm:justify-between items-center">
+        <!-- Previous Button (Left) -->
+        <button
+          (click)="onPageChange(currentPage - 1)"
+          [disabled]="isPrevDisabled()"
+          class="text-gray-500 hover:text-gray-700 disabled:text-gray-300 transition-colors duration-200 bg-white p-2 rounded-md"
+        >
+          <span class="flex items-center space-x-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              />
+            </svg>
+            <span>Previous</span>
+          </span>
+        </button>
+
+        <!-- Page Numbers (Centered) -->
+        <div class="hidden sm:flex space-x-2">
+          <ng-container
+            *ngFor="let page of [].constructor(totalPages); let i = index"
+          >
+            <button
+              (click)="onPageChange(i)"
+              [class.bg-primary]="i === currentPage"
+              [class.text-white]="i === currentPage"
+              class="w-8 h-8 rounded-md bg-primary text-gray-700 hover:bg-blue-600 focus:outline-none transition-colors duration-200"
+            >
+              {{ i + 1 }}
+            </button>
+          </ng-container>
+        </div>
+
+        <!-- Next Button (Right) -->
+        <button
+          (click)="onPageChange(currentPage + 1)"
+          [disabled]="isNextDisabled()"
+          class="text-gray-500 hover:text-gray-700 disabled:text-gray-300 transition-colors duration-200 bg-white p-2 rounded-md"
+        >
+          <span class="flex items-center space-x-1">
+            <span>Next</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- View Details Modal -->
+    <div *ngIf="isModalOpen" class="fixed inset-0 z-50 overflow-hidden">
+      <!-- Modal Backdrop -->
+      <div
+        class="fixed inset-0 bg-black bg-opacity-30 transition-opacity"
+      ></div>
+
+      <!-- Modal Container -->
+      <div class="flex min-h-screen items-center justify-center p-4">
+        <div
+          class="relative w-full max-w-4xl rounded-lg bg-white shadow-xl flex flex-col overflow-hidden"
+        >
+          <!-- Fixed Header -->
+          <div class="border-b border-gray-200 bg-white px-6 py-4">
+            <div class="flex items-start justify-between">
+              <div>
+                <h2 class="text-xl font-semibold text-gray-900">
+                  View Details
+                </h2>
+                <p class="mt-1 text-sm text-gray-500">
+                  View your requisition details and ensure everything is
+                  accurate
+                </p>
+              </div>
+              <button
+                (click)="closeModal()"
+                class="ml-4 text-gray-400 hover:text-gray-500 focus:outline-none"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Scrollable Content -->
+          <div
+            class="flex-1 overflow-y-auto px-6 py-4 scrollbar-thin scrollbar-track-gray-100 scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400"
+            style="
+              max-height: calc(100vh - 16rem);
+              scrollbar-width: thin;
+              scrollbar-color: #d1d5db #f3f4f6;
+            "
+          >
+            <div class="space-y-6">
+              <!-- First Row -->
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                  <h3 class="text-sm font-medium text-gray-500">Job Title</h3>
+                  <p class="mt-1 text-sm text-gray-900">
+                    {{ modalElement?.jobTitle }}
+                  </p>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-500">Manager ID</h3>
+                  <p class="mt-1 text-sm text-gray-900">
+                    {{ modalElement?.managerId }}
+                  </p>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-500">
+                    Manager Name
+                  </h3>
+                  <div class="mt-1 flex items-center">
+                    <img
+                      [src]="modalElement?.managerImage"
+                      [alt]="modalElement?.managerName"
+                      class="h-8 w-8 rounded-full object-cover"
+                    />
+                    <span class="ml-2 text-sm text-gray-900">{{
+                      modalElement?.managerName
+                    }}</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-500">Priority</h3>
+                  <div class="mt-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 512 512"
+                      [ngClass]="{
+                        'text-green-500': modalElement?.priority === 'high',
+                        'text-yellow-500': modalElement?.priority === 'medium',
+                        'text-red-500': modalElement?.priority === 'low'
+                      }"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M80 480a16 16 0 0 1-16-16V68.13a24 24 0 0 1 11.9-20.72C88 40.38 112.38 32 160 32c37.21 0 78.83 14.71 115.55 27.68C305.12 70.13 333.05 80 352 80a183.8 183.8 0 0 0 71-14.5a18 18 0 0 1 25 16.58v219.36a20 20 0 0 1-12 18.31c-8.71 3.81-40.51 16.25-84 16.25c-24.14 0-54.38-7.14-86.39-14.71C229.63 312.79 192.43 304 160 304c-36.87 0-55.74 5.58-64 9.11V464a16 16 0 0 1-16 16"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Second Row -->
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                  <h3 class="text-sm font-medium text-gray-500">
+                    Opportunity Type
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-900">Work from office</p>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-500">Location</h3>
+                  <p class="mt-1 text-sm text-gray-900">Bengaluru</p>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-500">Job Type</h3>
+                  <p class="mt-1 text-sm text-gray-900">Full-time</p>
+                </div>
+                <div>
+                  <h3 class="text-sm font-medium text-gray-500">Experience</h3>
+                  <p class="mt-1 text-sm text-gray-900">
+                    {{ modalElement?.experience }}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Expected Notice Period -->
+              <div>
+                <h3 class="text-sm font-medium text-gray-500">
+                  Expected Notice Period
+                </h3>
+                <p class="mt-1 text-sm text-gray-900">30 days</p>
+              </div>
+
+              <!-- Job Summary -->
+              <div>
+                <h3 class="text-sm font-medium text-gray-500">Job Summary</h3>
+                <p class="mt-1 text-sm text-gray-900">
+                  The Maps team is developing tools to analyze, visualize,
+                  process, manage, and curate data on a large scale. Our team
+                  combines disparate signals such as data analytics, community
+                  engagement, and user feedback to improve the Maps Platform.
+                </p>
+              </div>
+
+              <!-- Key Responsibilities -->
+              <div class="pb-4">
+                <h3 class="text-sm font-medium text-gray-500">
+                  Key Responsibilities
+                </h3>
+                <ul class="mt-1 list-disc space-y-2 pl-5 text-sm text-gray-900">
+                  <li>
+                    On any given day you may be asked to analyze large data sets
+                    to identify errors in the map, and design and implement a
+                    complex algorithm for resolving the issue.
+                  </li>
+                  <li>
+                    Review the solution with a team of engineers and analysts,
+                    and integrate the resulting solution into the data
+                    processing pipeline.
+                  </li>
+                  <li>
+                    We are looking for engineers who can be part of the team
+                    building a massive, scalable, distributed system for
+                    enabling the maps data platform.
+                  </li>
+                  <li>
+                    Successful candidates will have exceptional engineering and
+                    communication skills and believe that data-driven feedback
+                    leads to great products.
+                  </li>
+                </ul>
+              </div>
+              <!-- Must-Have Skills -->
+              <div class="pb-4">
+                <h3 class="text-sm font-medium text-gray-500">
+                  Must-Have Skills
+                </h3>
+                <ul class="mt-1 list-disc space-y-2 pl-5 text-sm text-gray-900">
+                  <li>
+                    Bachelor's degree in Computer Science, Information
+                    Technology, or a related field.
+                  </li>
+                  <li>
+                    3+ years of experience in a software product development
+                    organization building modern and scalable big data
+                    applications.
+                  </li>
+                  <li>
+                    Fluency in Hadoop technologies and big data processing
+                    technologies - Spark, YARN, HDFS, Oozie, Hive.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reject Reason Modal -->
+    <div *ngIf="isRejectModalOpen" class="fixed inset-0 z-50 overflow-hidden">
+      <!-- Modal Backdrop -->
+      <div
+        class="fixed inset-0 bg-black bg-opacity-30 transition-opacity"
+      ></div>
+
+      <!-- Modal Container -->
+      <div class="flex min-h-screen items-center justify-center p-4">
+        <div
+          class="relative w-full max-w-2xl rounded-lg bg-white shadow-xl flex flex-col overflow-hidden"
+        >
+          <!-- Fixed Header -->
+          <div class="border-b border-gray-200 bg-white px-6 py-4">
+            <div class="flex items-start justify-between">
+              <div>
+                <h2 class="text-xl font-semibold text-gray-900">
+                  Reject Reason
+                </h2>
+                <p class="mt-1 text-sm text-gray-500">
+                  Kindly provide a reason for rejecting the manager's
+                  requisition
+                </p>
+              </div>
+              <button
+                (click)="closeRejectModal()"
+                class="ml-4 text-gray-400 hover:text-gray-500 focus:outline-none"
+              >
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Modal Content -->
+          <div class="p-6">
+            <form
+              [formGroup]="rejectForm"
+              (ngSubmit)="
+                rejectModalElement && onRejectStatusChange(rejectModalElement)
+              "
+            >
+              <div class="space-y-4">
+                <!-- Reason Field -->
+                <div>
+                  <label
+                    class="flex items-center text-sm font-medium text-gray-700"
+                  >
+                    Reason
+                    <span class="ml-1 text-red-500">*</span>
+                  </label>
+                  <textarea
+                    formControlName="reason"
+                    rows="6"
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm resize-none"
+                    placeholder="Enter your reason for rejection..."
+                  ></textarea>
+                  <div
+                    *ngIf="
+                      rejectForm.get('reason')?.touched &&
+                      rejectForm.get('reason')?.hasError('required')
+                    "
+                    class="mt-1 text-sm text-red-500"
+                  >
+                    Reason is required
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex justify-end pt-4">
+                  <button
+                    type="submit"
+                    [disabled]="!rejectForm.valid"
+                    class="px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Reject
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

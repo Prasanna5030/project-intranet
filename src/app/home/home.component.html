@@ -1,0 +1,53 @@
+<div class="py-8 px-[3%] h-full ">
+  <div class="col space-y-4 ">
+    <h2 class="main_heading mb-0">Home</h2>
+    <div class="mb-4">
+      <div class="flex -ml-4 border-solid border-b border-gray-300">
+        <div
+          *ngFor="let tab of tabs"
+          class="px-4 py-2 text-sm font-medium cursor-pointer"
+          [class.text-primary]="tab.active"
+          [class.text-gray-600]="!tab.active"
+          [class.border-b-2]="tab.active"
+          [class.border-primary]="tab.active"
+          [class.border-solid]="tab.active"
+          (click)="activateTab(tab)"
+          [class.active-tab]="tab.active"
+        >
+          {{ tab.name }}
+        </div>
+      </div>
+
+      <!-- Tab content -->
+      <div class="tab-content mt-4">
+        <ng-container *ngFor="let tab of tabs">
+          <ng-container *ngIf="tab.active">
+            <ng-container [ngTemplateOutlet]="tab.content"></ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <!-- Templates for each tab -->
+      <ng-template #overview>
+        <!-- Render OverviewComponent in this tab -->
+        <app-overview></app-overview>
+      </ng-template>
+
+      <!-- <ng-template #employeeAnalytics>
+        <app-employee-analytics></app-employee-analytics>
+      </ng-template>
+
+      <ng-template #attendanceAnalytics>
+        <app-attendance-analytics></app-attendance-analytics>
+      </ng-template>
+
+      <ng-template #expenseAnalytics>
+        <app-expense-analytics></app-expense-analytics>
+      </ng-template>
+
+      <ng-template #assetManagementAnalytics>
+        <app-asset-management-analytics></app-asset-management-analytics>
+      </ng-template> -->
+    </div>
+  </div>
+</div>

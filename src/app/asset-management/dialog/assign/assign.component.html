@@ -1,0 +1,52 @@
+<div class="flex flex-col ">
+    <div class="flex justify-between">
+        <div class="">
+            <h2 class="font-bold">Assign</h2>
+            <span class="text-sm"> Assign {{data.assetId}} asset to an employee</span>
+        </div>
+        <button mat-icon-button mat-dialog-close ><mat-icon>close</mat-icon></button>
+    </div>
+    
+    <div class="assign-form mt-4">
+       
+        <form [formGroup]="assignForm">
+           <div class="flex flex-col gap-2">
+            <div class="flex justify-between gap-4 ">
+                <mat-form-field appearance="outline" class="custom-form-field">
+                    <mat-label>Department</mat-label>
+                    <mat-select formControlName="department">
+                        <mat-option *ngFor="let item of assignedAsset" [value]="item.department"> {{item.department}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="assignForm.get('department')?.invalid && (assignForm.get('department')?.dirty || assignForm.get('department')?.touched)">Please select a department</mat-error>
+                </mat-form-field>
+    
+                <mat-form-field appearance="outline" class="custom-form-field">
+                    <mat-label>Team</mat-label>
+                    <mat-select formControlName="team">
+                        <mat-option *ngFor="let item of assignedAsset" [value]="item.team">{{item.team}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+               </div>
+               <div class="flex justify-between gap-4 ">
+                <mat-form-field appearance="outline" class="custom-form-field">
+                    <mat-label>Employee Id</mat-label>
+                    <input type="text" matInput formControlName="employeeId" required />
+                    <mat-error *ngIf="assignForm.get('employeeId')?.invalid && (assignForm.get('employeeId') ?.dirty || assignForm.get('employeeId')?.touched)">Please enter an employee id</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="outline" class="custom-form-field">
+                        <mat-label>Employee Name</mat-label>
+                        <mat-select formControlName="employeeName">
+                            <mat-option *ngFor="let item of assignedAsset ; let i= index" [value]="item.employeeName" > {{item.employeeName}}</mat-option>
+    
+                        </mat-select>
+                        <mat-error *ngIf="assignForm.get('employeeName')?.invalid && (assignForm.get('employee') ?.dirty || assignForm.get('employeeName')?.touched)">Please select an employee name</mat-error>
+                    </mat-form-field>
+               </div>
+               <button type="submit" class="flex justify-end bg-[#03B877] ml-auto text-white rounded-md p-2 px-6 text-[0.8rem]"  mat-dialog-close (click)="handleAssignAsset(assignForm)" [disabled]="!(assignForm.touched && assignForm.valid)">Assign</button>
+
+           </div>
+        </form>
+       
+    </div>
+</div>

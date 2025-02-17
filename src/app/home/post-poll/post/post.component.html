@@ -1,0 +1,1157 @@
+<div>
+  <div class="w-full mb-4 flex items-center">
+    <!-- Horizontal Line -->
+    <div class="flex-1 border-t border-solid border-gray-300"></div>
+
+    <!-- Dropdown -->
+    <div class="ml-4 flex items-center gap-2">
+      <!-- Label -->
+      <span class="text-normal text-black font-normal">Sort by:</span>
+      <select
+        class="border border-gray-300 border-solid rounded-md text-sm p-1 text-gray-700 bg-white shadow-sm focus:outline-none focus:ring-1 focus:ring-primary"
+      >
+        <option value="all">All</option>
+        <option value="posted_by_you">Posted By You</option>
+        <option value="recent">Recent</option>
+        <option value="old">Old</option>
+      </select>
+    </div>
+  </div>
+  <div class="bg-white mb-4 rounded-lg shadow-md relative">
+    <div class="p-4">
+      <div class="flex justify-between items-start">
+        <div class="flex items-center">
+          <img
+            class="object-cover w-10 h-10 self-center mx-2 rounded-full"
+            src="https://randomuser.me/api/portraits/women/2.jpg"
+            alt="Jyoti Kumari"
+          />
+          <div class="ml-2">
+            <h3
+              class="font-extrabold text-xs text-black"
+              style="
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+                font-size: 14px;
+                font-weight: 500;
+              "
+            >
+              Jyoti Kumari
+            </h3>
+
+            <p
+              class="text-gray-500 text-xs"
+              style="margin-top: 4px; padding: 0; line-height: 1"
+            >
+              HR Manager
+              <span
+                class="mx-2 w-1.5 h-1.5 bg-gray-500 rounded-full inline-block"
+              ></span>
+              <span>Posted 1d ago</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button
+            class="focus:outline-none"
+            (click)="toggleDropdown()"
+            [ngClass]="{ 'bg-gray-200 rounded-md': isDropdownOpen }"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              />
+            </svg>
+          </button>
+          <div
+            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10"
+            [ngClass]="{ block: isDropdownOpen, hidden: !isDropdownOpen }"
+          >
+            <div class="py-1">
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Edit</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-t-2 border-solid my-2 border-gray-100" />
+      <div>
+        <h3 class="font-medium text-base text-black">
+          New Document Approval Center
+        </h3>
+        <p class="font-normal text-[0.85rem] text-gray-600 mt-2">
+          Exciting news! We've launched a new "Document Approval Center" on our
+          intranet to streamline document approvals. Features include a KYC
+          section for compliance and a "My Documents" area for easy document
+          management. Explore these new features today!
+        </p>
+      </div>
+      <div class="flex justify-between items-center mt-4">
+        <button class="bg-primary text-white px-3 md:px-6 py-1.5 rounded-sm">
+          Acknowledge
+        </button>
+
+        <div class="relative">
+          <button
+            class="bg-none text-gray-500 text-sm"
+            (click)="openAcknowledgementsModal()"
+          >
+            4 Acknowledgements
+          </button>
+          <!-- Acknowledgements Modal -->
+          <div
+            *ngIf="isAcknowledgementsModalOpen"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          >
+            <!-- Modal Content -->
+            <div class="bg-white rounded-lg shadow-lg md:w-96">
+              <div class="flex justify-between items-center p-4">
+                <h2 class="text-lg font-semibold">Acknowledgements</h2>
+                <button
+                  class="text-gray-400 text-lg hover:text-gray-700"
+                  (click)="closeAcknowledgementsModal()"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+
+              <div class="p-4 space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-2 relative">
+                    <div class="relative">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/44.jpg"
+                        alt="Avatar"
+                        class="w-6 h-6 rounded-full"
+                      />
+                    </div>
+                    <div class="flex flex-row gap-4 items-center">
+                      <p class="font-normal text-black">George</p>
+                      <p class="text-md text-gray-500">Sales Executive</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-400">34m</span>
+                  <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-t-2 border-solid my-3 border-gray-100" />
+
+      <div class="flex items-center justify-between text-xs">
+        <!-- Like Button -->
+        <div class="relative">
+          <!-- Like Button -->
+          <button
+            class="flex items-center space-x-1 text-primary"
+            (click)="openLikesModal()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2-2 0 012-2h2.5"
+              />
+            </svg>
+            <span>{{ likes.length }} Likes</span>
+          </button>
+
+          <!-- Likes Modal -->
+          <div
+            *ngIf="isLikesModalOpen"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-5"
+          >
+            <!-- Modal Content -->
+            <div class="bg-white rounded-lg shadow-lg w-[480px]">
+              <!-- Header -->
+              <div class="flex justify-between items-center px-4 py-3">
+                <h2 class="text-lg font-semibold">Likes</h2>
+                <button
+                  class="text-gray-400 hover:text-gray-700 p-1"
+                  (click)="closeLikesModal()"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+
+              <!-- Content -->
+              <div class="py-2">
+                <div
+                  *ngFor="let user of likes"
+                  class="px-4 py-2 hover:bg-gray-50"
+                >
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                      <div class="relative">
+                        <img
+                          [src]="user.avatar"
+                          alt="Avatar"
+                          class="w-8 h-8 rounded-full object-cover"
+                        />
+                        <div class="absolute -bottom-2 -right-1">
+                          <div class="bg-primary rounded-full p-1">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-2 w-2 text-white"
+                              fill="white"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2-2 0 012-2h2.5"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <span class="font-medium text-sm">{{ user.name }}</span>
+                        <span
+                          class="mx-2 w-1 h-1 bg-gray-500 rounded-full inline-block"
+                        ></span>
+                        <span class="text-sm text-gray-500">{{
+                          user.role
+                        }}</span>
+                      </div>
+                    </div>
+                    <span class="text-sm text-gray-400">{{ user.time }}</span>
+                  </div>
+                  <hr class="border-t-2 border-solid mt-3 border-gray-100" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Comments -->
+        <p class="text-gray-500">5 Comments</p>
+      </div>
+
+      <hr class="border-t-2 border-solid my-2 border-gray-100" />
+
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <button class="focus:outline-none text-primary flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+              />
+            </svg>
+            <span class="ml-1 text-md">Like</span>
+          </button>
+          <button
+            class="focus:outline-none ml-4 text-primary flex items-center"
+            (click)="toggleCommentInput()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              />
+            </svg>
+            <span class="ml-1 text-md">Comment</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="relative mt-4" *ngIf="isCommentInputOpen">
+        <input
+          class="w-full rounded-full text-sm text-gray-700 border-2 border-solid border-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-300 py-2 px-4 pr-12"
+          type="text"
+          placeholder="Add a comments..."
+          autofocus
+        />
+
+        <button
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary rounded-full p-2 focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 100 100"
+            class="rotate-90"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="m47.655 1.634l-35 95c-.828 2.24 1.659 4.255 3.68 2.98l33.667-21.228l33.666 21.228c2.02 1.271 4.503-.74 3.678-2.98l-35-95C51.907.514 51.163.006 50 .008c-1.163.001-1.99.65-2.345 1.626m-.155 14.88v57.54L19.89 91.461Z"
+              color="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex mt-4">
+        <div>
+          <img
+            src="https://randomuser.me/api/portraits/men/42.jpg"
+            alt="User Avatar"
+            class="w-10 h-10 rounded-full mr-4"
+          />
+        </div>
+        <div
+          class="w-full border-2 border-solid border-gray-100 rounded-md px-2 pt-1"
+        >
+          <div class="flex-1 flex justify-between items-start">
+            <div>
+              <h3
+                class="text-[1rem] font-semibold text-black"
+                style="
+                  margin: 0;
+                  padding: 0;
+                  line-height: 1;
+                  font-size: 16px;
+                  font-weight: 500;
+                "
+              >
+                Ralph Edwards
+              </h3>
+              <p
+                class="text-gray-500 text-[0.7rem]"
+                style="margin-top: 4px; padding: 0; line-height: 1"
+              >
+                UI/UX Designer
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-xs">2w</p>
+            </div>
+          </div>
+          <div class="mt-1 text-gray-950 font-medium text-[0.9rem]">
+            <p>Great News!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- card 2 -->
+
+  <div class="bg-white rounded-lg mb-4 shadow-md relative">
+    <div class="p-4">
+      <div class="flex justify-between items-start">
+        <div class="flex items-center">
+          <img
+            class="object-cover w-10 h-10 self-center mx-2 rounded-full"
+            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            alt="Jyoti Kumari"
+          />
+          <div class="ml-2">
+            <h3
+              class="font-extrabold text-xs text-black"
+              style="
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+                font-size: 14px;
+                font-weight: 500;
+              "
+            >
+              Henry Arthur
+            </h3>
+
+            <p
+              class="text-gray-500 text-xs"
+              style="margin-top: 4px; padding: 0; line-height: 1"
+            >
+              HR - Employee Engagement
+              <span
+                class="mx-2 w-1.5 h-1.5 bg-gray-500 rounded-full inline-block"
+              ></span>
+              <span>Posted 1d ago</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button
+            class="focus:outline-none"
+            (click)="toggleDropdown()"
+            [ngClass]="{ 'bg-gray-200 rounded-md': isDropdownOpen }"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              />
+            </svg>
+          </button>
+          <div
+            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10"
+            [ngClass]="{ block: isDropdownOpen, hidden: !isDropdownOpen }"
+          >
+            <div class="py-1">
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Edit</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-t-2 border-solid my-2 border-gray-100" />
+      <div>
+        <h3 class="font-medium text-base text-black">Accomplishment!</h3>
+        <p class="font-normal text-[0.85rem] text-gray-600 mt-2">
+          I'm thrilled to announce that our team has achieved specific
+          accomplishment. This is a testament to our hard work, dedication, and
+          teamwork. I want to thank each and every one of you for your
+          contributions to this success. It's because of your efforts that we've
+          been able to reach this milestone.
+        </p>
+      </div>
+      <div class="flex justify-between items-center mt-4">
+        <button
+          class="bg-gray-200 text-gray-400 px-3 md:px-6 py-1.5 rounded-sm"
+        >
+          Acknowledge
+        </button>
+
+        <div class="relative">
+          <button
+            class="bg-none text-gray-500 text-sm"
+            (click)="openAcknowledgementsModal()"
+          >
+            4 Acknowledgements
+          </button>
+          <!-- Acknowledgements Modal -->
+          <div
+            *ngIf="isAcknowledgementsModalOpen"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          >
+            <!-- Modal Content -->
+            <div class="bg-white rounded-lg shadow-lg md:w-96">
+              <div class="flex justify-between items-center p-4">
+                <h2 class="text-lg font-semibold">Acknowledgements</h2>
+                <button
+                  class="text-gray-400 text-lg hover:text-gray-700"
+                  (click)="closeAcknowledgementsModal()"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+
+              <div class="p-4 space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-2 relative">
+                    <div class="relative">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/44.jpg"
+                        alt="Avatar"
+                        class="w-6 h-6 rounded-full"
+                      />
+                    </div>
+                    <div class="flex flex-row gap-4 items-center">
+                      <p class="font-normal text-black">George</p>
+                      <p class="text-md text-gray-500">Sales Executive</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-400">34m</span>
+                  <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-t-2 border-solid my-3 border-gray-100" />
+
+      <div class="flex items-center justify-between text-xs">
+        <!-- Like Button -->
+        <div class="relative">
+          <!-- Like Button -->
+          <button
+            class="flex items-center space-x-1 text-primary"
+            (click)="openLikesModal()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 fill-primary"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2-2 0 012-2h2.5"
+              />
+            </svg>
+            <span> You & {{ likes.length }} others</span>
+          </button>
+
+          <!-- Likes Modal -->
+          <div
+            *ngIf="isLikesModalOpen"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-5"
+          >
+            <!-- Modal Content -->
+            <div class="bg-white rounded-lg shadow-lg w-[480px]">
+              <!-- Header -->
+              <div class="flex justify-between items-center px-4 py-3">
+                <h2 class="text-lg font-semibold">Likes</h2>
+                <button
+                  class="text-gray-400 hover:text-gray-700 p-1"
+                  (click)="closeLikesModal()"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+
+              <!-- Content -->
+              <div class="py-2">
+                <div
+                  *ngFor="let user of likes"
+                  class="px-4 py-2 hover:bg-gray-50"
+                >
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                      <div class="relative">
+                        <img
+                          [src]="user.avatar"
+                          alt="Avatar"
+                          class="w-8 h-8 rounded-full object-cover"
+                        />
+                        <div class="absolute -bottom-2 -right-1">
+                          <div class="bg-primary rounded-full p-1">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-2 w-2 text-white"
+                              fill="white"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2-2 0 012-2h2.5"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <span class="font-medium text-sm">{{ user.name }}</span>
+                        <span
+                          class="mx-2 w-1 h-1 bg-gray-500 rounded-full inline-block"
+                        ></span>
+                        <span class="text-sm text-gray-500">{{
+                          user.role
+                        }}</span>
+                      </div>
+                    </div>
+                    <span class="text-sm text-gray-400">{{ user.time }}</span>
+                  </div>
+                  <hr class="border-t-2 border-solid mt-3 border-gray-100" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Comments -->
+        <p class="text-gray-500">5 Comments</p>
+      </div>
+
+      <hr class="border-t-2 border-solid my-2 border-gray-100" />
+
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <button class="focus:outline-none text-primary flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+              />
+            </svg>
+            <span class="ml-1 text-md">Like</span>
+          </button>
+          <button
+            class="focus:outline-none ml-4 text-primary flex items-center"
+            (click)="toggleCommentInput()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              />
+            </svg>
+            <span class="ml-1 text-md">Comment</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="relative mt-4" *ngIf="isCommentInputOpen">
+        <input
+          class="w-full rounded-full border-2 border-solid border-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-300 py-2 px-4 pr-12"
+          type="text"
+          placeholder="Add a comments..."
+          autofocus
+        />
+
+        <button
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary rounded-full p-2 focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 100 100"
+            class="rotate-90"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="m47.655 1.634l-35 95c-.828 2.24 1.659 4.255 3.68 2.98l33.667-21.228l33.666 21.228c2.02 1.271 4.503-.74 3.678-2.98l-35-95C51.907.514 51.163.006 50 .008c-1.163.001-1.99.65-2.345 1.626m-.155 14.88v57.54L19.89 91.461Z"
+              color="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex mt-4">
+        <div>
+          <img
+            src="https://randomuser.me/api/portraits/men/42.jpg"
+            alt="User Avatar"
+            class="w-10 h-10 rounded-full mr-4"
+          />
+        </div>
+        <div
+          class="w-full border-2 border-solid border-gray-100 rounded-md px-2 pt-1"
+        >
+          <div class="flex-1 flex justify-between items-start">
+            <div>
+              <h3
+                class="text-[1rem] font-semibold text-black"
+                style="
+                  margin: 0;
+                  padding: 0;
+                  line-height: 1;
+                  font-size: 16px;
+                  font-weight: 500;
+                "
+              >
+                Wade Warren
+              </h3>
+              <p
+                class="text-gray-500 text-[0.7rem]"
+                style="margin-top: 4px; padding: 0; line-height: 1"
+              >
+                UI/UX Designer
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500">2w</p>
+            </div>
+          </div>
+          <div class="mt-1 text-gray-950 font-medium text-[0.9rem]">
+            <p>Congratulations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- card 3 -->
+
+  <div class="bg-white rounded-lg mb-4 shadow-md relative">
+    <div class="p-4">
+      <div class="flex justify-between items-start">
+        <div class="flex items-center">
+          <img
+            class="object-cover w-10 h-10 self-center mx-2 rounded-full"
+            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            alt="Jyoti Kumari"
+          />
+          <div class="ml-2">
+            <h3
+              class="font-extrabold text-xs text-black"
+              style="
+                margin: 0;
+                padding: 0;
+                line-height: 1;
+                font-size: 14px;
+                font-weight: 500;
+              "
+            >
+              John Jacob
+            </h3>
+
+            <p
+              class="text-gray-500 text-xs"
+              style="margin-top: 4px; padding: 0; line-height: 1"
+            >
+              HR - Employee Engagement
+              <span
+                class="mx-2 w-1.5 h-1.5 bg-gray-500 rounded-full inline-block"
+              ></span>
+              <span>Posted 1d ago</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button
+            class="focus:outline-none"
+            (click)="toggleDropdown()"
+            [ngClass]="{ 'bg-gray-200 rounded-md': isDropdownOpen }"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              />
+            </svg>
+          </button>
+          <div
+            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10"
+            [ngClass]="{ block: isDropdownOpen, hidden: !isDropdownOpen }"
+          >
+            <div class="py-1">
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Edit</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-t-2 border-solid my-2 border-gray-100" />
+      <div>
+        <h3 class="font-medium text-base text-black">Got Promoted!</h3>
+        <p class="font-normal text-[0.85rem] text-gray-600 mt-2">
+          I'm thrilled to share that I've been promoted to new position! I'm
+          grateful for this opportunity and excited to continue working with all
+          of you in this new capacity. I want to thank everyone who has
+          supported me along the way. I couldn't have achieved this without our
+          amazing team. Looking forward to contributing more to our
+          Organisation’s success!
+        </p>
+      </div>
+      <div class="flex justify-between items-center mt-4">
+        <button class="bg-primary text-white px-3 md:px-6 py-1.5 rounded-sm">
+          Acknowledge
+        </button>
+
+        <div class="relative">
+          <button
+            class="bg-none text-gray-500 text-sm"
+            (click)="openAcknowledgementsModal()"
+          >
+            4 Acknowledgements
+          </button>
+          <!-- Acknowledgements Modal -->
+          <div
+            *ngIf="isAcknowledgementsModalOpen"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-gray-100 bg-opacity-50"
+          >
+            <!-- Modal Content -->
+            <div class="bg-white rounded-lg shadow-lg md:w-96">
+              <div class="flex justify-between items-center p-4">
+                <h2 class="text-lg font-semibold">Acknowledgements</h2>
+                <button
+                  class="text-gray-400 text-lg hover:text-gray-700"
+                  (click)="closeAcknowledgementsModal()"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+
+              <div class="p-4 space-y-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center space-x-2 relative">
+                    <div class="relative">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/44.jpg"
+                        alt="Avatar"
+                        class="w-6 h-6 rounded-full"
+                      />
+                    </div>
+                    <div class="flex flex-row gap-4 items-center">
+                      <p class="font-normal text-black">George</p>
+                      <p class="text-md text-gray-500">Sales Executive</p>
+                    </div>
+                  </div>
+                  <span class="text-sm text-gray-400">34m</span>
+                  <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="border-t-2 border-solid my-3 border-gray-100" />
+
+      <div class="flex items-center justify-between text-xs">
+        <!-- Like Button -->
+        <div class="relative">
+          <!-- Like Button -->
+          <button
+            class="flex items-center space-x-1 text-primary"
+            (click)="openLikesModal()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2-2 0 012-2h2.5"
+              />
+            </svg>
+            <span>{{ likes.length }} Likes</span>
+          </button>
+
+          <!-- Likes Modal -->
+          <div
+            *ngIf="isLikesModalOpen"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-5"
+          >
+            <!-- Modal Content -->
+            <div class="bg-white rounded-lg shadow-lg w-[480px]">
+              <!-- Header -->
+              <div class="flex justify-between items-center px-4 py-3">
+                <h2 class="text-lg font-medium">Likes</h2>
+                <button
+                  class="text-gray-400 hover:text-gray-700 p-1"
+                  (click)="closeLikesModal()"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M18.3 5.71a.996.996 0 0 0-1.41 0L12 10.59L7.11 5.7A.996.996 0 1 0 5.7 7.11L10.59 12L5.7 16.89a.996.996 0 1 0 1.41 1.41L12 13.41l4.89 4.89a.996.996 0 1 0 1.41-1.41L13.41 12l4.89-4.89c.38-.38.38-1.02 0-1.4"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <hr class="border-t-2 border-solid mb-1 border-gray-100" />
+
+              <!-- Content -->
+              <div class="py-2">
+                <div
+                  *ngFor="let user of likes"
+                  class="px-4 py-2 hover:bg-gray-50"
+                >
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                      <div class="relative">
+                        <img
+                          [src]="user.avatar"
+                          alt="Avatar"
+                          class="w-8 h-8 rounded-full object-cover"
+                        />
+                        <div class="absolute -bottom-2 -right-1">
+                          <div class="bg-primary rounded-full p-1">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-2 w-2 text-white"
+                              fill="white"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2-2 0 012-2h2.5"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <span class="font-medium text-sm">{{ user.name }}</span>
+                        <span
+                          class="mx-2 w-1 h-1 bg-gray-500 rounded-full inline-block"
+                        ></span>
+                        <span class="text-sm text-gray-500">{{
+                          user.role
+                        }}</span>
+                      </div>
+                    </div>
+                    <span class="text-sm text-gray-400">{{ user.time }}</span>
+                  </div>
+                  <hr class="border-t-2 border-solid mt-3 border-gray-100" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Comments -->
+        <p class="text-gray-500">5 Comments</p>
+      </div>
+
+      <hr class="border-t-2 border-solid my-2 border-gray-100" />
+
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <button class="focus:outline-none text-primary flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+              />
+            </svg>
+            <span class="ml-1 text-md">Like</span>
+          </button>
+          <button
+            class="focus:outline-none ml-4 text-primary flex items-center"
+            (click)="toggleCommentInput()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              />
+            </svg>
+            <span class="ml-1 text-md">Comment</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="relative mt-4" *ngIf="isCommentInputOpen">
+        <input
+          class="w-full rounded-full border-2 border-solid border-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-300 py-2 px-4 pr-12"
+          type="text"
+          placeholder="Add a comments..."
+          autofocus
+        />
+
+        <button
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary rounded-full p-2 focus:outline-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="25"
+            viewBox="0 0 100 100"
+            class="rotate-90"
+          >
+            <path
+              fill="currentColor"
+              fill-rule="evenodd"
+              d="m47.655 1.634l-35 95c-.828 2.24 1.659 4.255 3.68 2.98l33.667-21.228l33.666 21.228c2.02 1.271 4.503-.74 3.678-2.98l-35-95C51.907.514 51.163.006 50 .008c-1.163.001-1.99.65-2.345 1.626m-.155 14.88v57.54L19.89 91.461Z"
+              color="currentColor"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex mt-4">
+        <div>
+          <img
+            src="https://randomuser.me/api/portraits/men/42.jpg"
+            alt="User Avatar"
+            class="w-10 h-10 rounded-full mr-4"
+          />
+        </div>
+        <div
+          class="w-full border-2 border-solid border-gray-100 rounded-md px-2 pt-1"
+        >
+          <div class="flex-1 flex justify-between items-start">
+            <div>
+              <h3
+                class="text-[1rem] font-semibold text-black"
+                style="
+                  margin: 0;
+                  padding: 0;
+                  line-height: 1;
+                  font-size: 16px;
+                  font-weight: 500;
+                "
+              >
+                Robert Fox
+              </h3>
+              <p
+                class="text-gray-500 text-[0.7rem]"
+                style="margin-top: 4px; padding: 0; line-height: 1"
+              >
+                UI/UX Designer
+              </p>
+            </div>
+            <div>
+              <p class="text-gray-500">2w</p>
+            </div>
+          </div>
+          <div class="mt-1 text-gray-950 font-medium text-[0.9rem]">
+            <p>Congratulations</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

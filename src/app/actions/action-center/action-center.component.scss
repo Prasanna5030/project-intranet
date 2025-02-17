@@ -1,0 +1,26 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+  }
+  
+
+  .example-tab-icon {
+    margin-right: 8px;
+  }
+
+  .mat-mdc-tab-labels{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sticky-button {
+//  position: sticky;
+ // top: 10px; /* Distance from the top of the container */
+//  right:10px;
+  z-index: 100; /* Ensure it appears above other content */
+  background-color: #007bff;
+  color: white;
+  border: none;
+ // padding: 10px 15px;
+  cursor: pointer;
+}

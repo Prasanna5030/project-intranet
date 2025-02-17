@@ -1,0 +1,74 @@
+.custom-form-field{
+    width: 300px;
+}
+
+.custom-width{
+    width:180px;
+}
+
+
+// .filtered-container{
+//   ::ng-deep{
+//    mat-form-field > .mat-mdc-select-panel {
+//       background-color: #ffffff !important;
+//     }
+//   }
+  
+// }
+
+
+
+.filtered-container{  ::ng-deep {
+    div>mat-form-field>.cdk-overlay-container>.cdk-overlay-connected-position-bounding-box>.mat-mdc-select-panel-abovel>mat-mdc-select-panel  {
+    background-color: #ffffff !important;
+  }
+}}
+
+
+.filtered-container{
+    ::ng-deep{
+        mat-form-field > .mat-mdc-text-field-wrapper{
+            background-color: #ffffff !important;
+            height: 25px;
+          
+        }
+        // & mat-form-field>.cdk-overlay-container>.cdk-overlay-connected-position-bounding-box>div.mat-mdc-select-panel{
+        //   background-color: #ffffff !important;
+        // }
+}
+}
+
+
+
+.filtered-container{
+  ::ng-deep{
+      mat-form-field > .mat-mdc-text-field-wrapper>.mat-mdc-form-field-flex>.mat-mdc-form-field-infix{
+          padding-top:0;
+          padding-bottom:0;
+          font-size: 0.6rem;
+        
+      }}}
+
+
+.filtered-container{
+  ::ng-deep{
+      mat-form-field >.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label{
+         top:10px !important
+        
+      }}}
+
+
+
+
+
+
+
+
+::ng-deep{
+    .cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        transform-origin: top center;
+        scrollbar-width: none;
+    }
+}

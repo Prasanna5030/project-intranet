@@ -1,0 +1,248 @@
+<div class="py-8 px-[3%] flex flex-col gap-4  h-screen">
+  <div class="flex justify-between items-center">
+    <div>
+      <h2 class="font-semibold text-[1.125rem]">Careers</h2>
+      <p class="text-gray-400 text-[0.9rem] font-normal mt-1">
+        In this section, you can manage requisitions and add new job openings
+      </p>
+    </div>
+    <div class="">
+      <!-- Button to open modal -->
+      <button
+        class="bg-primary rounded-full px-4 py-2 text-[0.8rem] font-normal text-white flex gap-1 items-center"
+        (click)="openModal()"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 1C8.27614 1 8.5 1.22386 8.5 1.5V7.5H14.5C14.7761 7.5 15 7.72386 15 8C15 8.27614 14.7761 8.5 14.5 8.5H8.5V14.5C8.5 14.7761 8.27614 15 8 15C7.72386 15 7.5 14.7761 7.5 14.5V8.5H1.5C1.22386 8.5 1 8.27614 1 8C1 7.72386 1.22386 7.5 1.5 7.5H7.5V1.5C7.5 1.22386 7.72386 1 8 1Z"
+            fill="white"
+          />
+        </svg>
+        <span>Add New Opening</span>
+      </button>
+
+      <!-- Modal -->
+      <div
+        *ngIf="isModalOpen"
+        class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center px-4 py-8"
+      >
+        <!-- Overlay -->
+        <div
+          class="fixed inset-0 bg-black bg-opacity-50"
+          (click)="closeModal()"
+        ></div>
+
+        <!-- Modal Container -->
+        <div
+          class="relative w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl bg-white rounded-lg shadow-xl overflow-hidden max-h-[90vh] flex flex-col"
+        >
+          <!-- Modal Header -->
+          <div
+            class="px-6 py-4 bg-gray-100 border-b flex justify-between items-center sticky top-0 z-10"
+          >
+            <div>
+              <h3 class="text-lg font-medium">Add New Opening</h3>
+              <p class="text-gray-400 text-sm">
+                Enter details of the job opening and post it in our careers page
+              </p>
+            </div>
+            <button
+              class="text-gray-500 hover:text-gray-700 focus:outline-none"
+              (click)="closeModal()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Modal Body - Scrollable Content -->
+          <div class="flex-grow overflow-y-auto p-6 space-y-3">
+            <form (ngSubmit)="onSubmit()" class="space-y-3">
+              <!-- Job Title -->
+              <mat-form-field appearance="outline" class="w-full border-focus">
+                <mat-label>Job Title</mat-label>
+                <input
+                  matInput
+                  [(ngModel)]="jobTitle"
+                  name="jobTitle"
+                  required
+                  class="w-full"
+                />
+              </mat-form-field>
+
+              <!-- Experience and Notice Period -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <mat-form-field appearance="outline" class="w-full">
+                  <mat-label>Experience</mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="experience"
+                    name="experience"
+                    required
+                    class="w-full"
+                  />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-full">
+                  <mat-label>Expected Notice Period</mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="noticePeriod"
+                    name="noticePeriod"
+                    required
+                    class="w-full"
+                  />
+                </mat-form-field>
+              </div>
+
+              <!-- Job Type and Location -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <mat-form-field appearance="outline" class="w-full">
+                  <mat-label>Job Type</mat-label>
+                  <mat-select
+                    [(ngModel)]="opportunityType"
+                    name="opportunityType"
+                  >
+                    <mat-option value="Full-Time">Opportunity</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-full">
+                  <mat-label>Location</mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="location"
+                    name="location"
+                    required
+                    class="w-full"
+                  />
+                </mat-form-field>
+              </div>
+
+              <!-- Employment Type -->
+              <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Employment Type</mat-label>
+                <mat-select [(ngModel)]="jobType" name="jobType">
+                  <mat-option value="Full-Time">Full-Time</mat-option>
+                  <mat-option value="Part-Time">Part-Time</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <!-- Textareas with Consistent Height -->
+              <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Job Summary</mat-label>
+                <textarea
+                  matInput
+                  [(ngModel)]="jobSummary"
+                  name="jobSummary"
+                  rows="3"
+                  required
+                  class="w-full resize-y"
+                ></textarea>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Key Responsibilities</mat-label>
+                <textarea
+                  matInput
+                  [(ngModel)]="keyResponsibilities"
+                  name="keyResponsibilities"
+                  rows="3"
+                  required
+                  class="w-full resize-y"
+                ></textarea>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Must-Have Skills</mat-label>
+                <textarea
+                  matInput
+                  [(ngModel)]="mustHaveSkills"
+                  name="mustHaveSkills"
+                  rows="3"
+                  required
+                  class="w-full resize-y"
+                ></textarea>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full">
+                <mat-label>Additional Requirements</mat-label>
+                <textarea
+                  matInput
+                  [(ngModel)]="additionalRequirements"
+                  name="additionalRequirements"
+                  rows="3"
+                  required
+                  class="w-full resize-y"
+                ></textarea>
+              </mat-form-field>
+
+              <!-- Submit Button -->
+              <button
+                color="primary"
+                type="submit"
+                class="my-2 py-2 float-right my-4"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mb-4">
+    <div class="flex -ml-4 border-solid border-b border-gray-300">
+      <div
+        *ngFor="let tab of tabs"
+        class="px-4 py-2 text-sm font-medium cursor-pointer"
+        [class.text-primary]="tab.active"
+        [class.text-gray-600]="!tab.active"
+        [class.border-b-2]="tab.active"
+        [class.border-primary]="tab.active"
+        [class.border-solid]="tab.active"
+        (click)="activateTab(tab)"
+        [class.active-tab]="tab.active"
+      >
+        {{ tab.name }}
+      </div>
+    </div>
+
+    <!-- Tab content -->
+    <div class="tab-content mt-4">
+      <ng-container *ngFor="let tab of tabs">
+        <ng-container *ngIf="tab.active">
+          <ng-container [ngTemplateOutlet]="tab.content"></ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <!-- Templates for each tab -->
+    <ng-template #pendingRequisitions>
+      <app-pending-requisitions></app-pending-requisitions>
+    </ng-template>
+
+    <!-- Template for the Job Openings tab -->
+    <ng-template #jobOpenings>
+      <app-job-openings> </app-job-openings>
+    </ng-template>
+  </div>
+</div>

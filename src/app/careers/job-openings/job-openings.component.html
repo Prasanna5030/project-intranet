@@ -1,0 +1,127 @@
+<div class="py-4">
+  <!-- Table -->
+  <div class="bg-white rounded-lg shadow overflow-hidden">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th
+            *ngFor="let column of columns"
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            {{ column.header }}
+          </th>
+          <th
+            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+          >
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let element of paginatedData">
+          <td
+            *ngFor="let column of columns"
+            class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+          >
+            {{ column.cell(element) }}
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <button
+              (click)="onJobClick()"
+              class="text-gray-500 hover:text-gray-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 4H4v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5M9 15L20 4m-5 0h5v5"
+                />
+              </svg>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div
+      class="flex items-center justify-between px-4 py-3 bg-white border-t border-gray-200 sm:px-6"
+    >
+      <div class="flex justify-between items-center w-full">
+        <!-- Previous Button (Left) -->
+        <button
+          (click)="onPageChange(currentPage - 1)"
+          [disabled]="isPrevDisabled()"
+          class="text-gray-500 hover:text-gray-700 disabled:text-gray-300 transition-colors duration-200 bg-white p-2 rounded-md"
+        >
+          <span class="flex items-center space-x-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              />
+            </svg>
+            <span>Previous</span>
+          </span>
+        </button>
+
+        <div class="hidden md:flex">
+          <ng-container
+            *ngFor="let page of [].constructor(totalPages); let i = index"
+          >
+            <button
+              (click)="onPageChange(i)"
+              [class.bg-primary]="i === currentPage"
+              [class.text-white]="i === currentPage"
+              [class.hover:bg-gray-50]="i !== currentPage"
+              class="w-8 h-8 rounded-md bg-primary text-gray-700 hover:bg-blue-600 focus:outline-none transition-colors duration-200"
+            >
+              {{ i + 1 }}
+            </button>
+          </ng-container>
+        </div>
+
+        <!-- Next Button (Right) -->
+        <button
+          (click)="onPageChange(currentPage + 1)"
+          [disabled]="isNextDisabled()"
+          class="text-gray-500 hover:text-gray-700 disabled:text-gray-300 transition-colors duration-200 bg-white p-2 rounded-md"
+        >
+          <span class="flex items-center space-x-1">
+            <span>Next</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

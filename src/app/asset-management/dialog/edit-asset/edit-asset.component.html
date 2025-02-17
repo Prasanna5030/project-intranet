@@ -1,0 +1,140 @@
+<div class="flex flex-col  m-2">
+    <div class="flex justify-between">
+        <div class="">
+            <h1 class="font-bold">Edit</h1>
+            <span class="text-sm">Edit the asset details below to update the asset and ensure accuracy.</span>
+        </div>
+        <button mat-dialog-close ><mat-icon>close</mat-icon></button>
+    </div>
+
+    <div class="editform">
+        <form [formGroup]="editForm">
+            <div class="flex flex-col gap-2 mt-4">
+                <div class="flex justify-between gap-4">
+                    <mat-form-field appearance="outline" class="custom-form-field">
+                        <mat-label>Asset Category</mat-label>
+                        <input type="text" matInput formControlName="assetCategory" value={{data.assetCategory}} placeholder=`{{data.assetCategory}}/>
+
+                        <mat-error *ngIf="editForm.get('assetCategory')?.touched || editForm.get('assetCategory')?.invalid">
+                            <span *ngIf="editForm.get('assetCategory')?.errors?.['required']"> Invalid or assetcategory is required
+                            </span>
+                        </mat-error>
+                       
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="custom-form-field">
+                        <mat-label> Asset Id</mat-label>
+                        <input type="text" matInput formControlName="assetId" value={{data.assetId}} placeholder={{data.assetId}}/>
+                        <mat-error *ngIf="editForm.get('assetId')?.touched || editForm.get('assetId')?.invalid">
+                            <span *ngIf="editForm.get('assetId')?.errors?.['required']">Invalid or assetId is required</span>
+                            
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="flex justify-between gap-4">
+                    <mat-form-field   class="custom-form-field" appearance="outline">
+                        <mat-label>Purchase Date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="purchaseDate">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="editForm.get('purchaseDate')?.touched || editForm.get('purchaseDate')?.invalid">
+                            <span *ngIf="editForm.get('purchaseDate')?.errors?.['required']"> purchase date is required</span>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline"  class="custom-form-field" >
+                        <mat-label>Cost</mat-label>
+                        <input type="number" matInput formControlName="cost" value={{data.cost}} placeholder={{data.cost}}/>
+                     
+                        <mat-error *ngIf="editForm.get('cost')?.touched || editForm.get('cost')?.invalid">
+                            <span *ngIf="editForm.get('cost')?.errors?.['required']"> cost is required</span>
+                            <span *ngIf="editForm.get('cost')?.errors?.['pattern']">Invalid cost</span>
+                            
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="flex justify-between gap-4">
+                    <mat-form-field appearance="fill"  class="custom-form-field" appearance="outline">
+                        <mat-label>Warrenty Expiry Date</mat-label>
+                        <input matInput [matDatepicker]="picker2" formControlName="warrentyExpiry">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2></mat-datepicker>
+                        <mat-error *ngIf="editForm.get('warrentyExpiry')?.touched || editForm.get('warrentyExpiry')?.invalid">
+                            <span *ngIf="editForm.get('warrentyExpiry')?.errors?.['required']"> WarrentyExpiry is required</span>
+                            
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline"  class="custom-form-field">
+                        <mat-label>Assignee</mat-label>
+                        <mat-select formControlName="assignee" [value]="assignee">
+                            <mat-option *ngFor="let item of assignee ; let i = index" [value]="assignee[i]">
+                                {{item}}
+                            </mat-option>
+                           
+                        </mat-select>
+                        <mat-error *ngIf="editForm.get('assignee')?.touched || editForm.get('assignee')?.invalid">
+                            <span *ngIf="editForm.get('assignee')?.errors?.['required']"> assignee is required</span>
+                            
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                </div>
+
+
+              <div class="flex flex-col  gap-2">
+                <h1 class="font-medium">Asset Related Images</h1>
+                <div class="flex h-36 border-2 border-gray-300 border-solid items-center">
+                    <!-- <button class="h-32 w-32 bg-gray-100 rounded-md items-center" (click)="addImage()">add images</button>
+                   <div formArrayName="image">
+                       
+                        <div *ngFor="let image of images.controls; let i = index"  [formGroupName]="i" >
+                            <input type="file"  formControlName="value" (change)="onFileChange($event, i)" hidden #fileInput> 
+                            <div class=" flex gap-2">
+                                <button class="border-2 border-solid border-grqay-500 p-1 rounded-md" (click)="triggerFileInput(fileInput)">Choose a file</button>
+                                <button mat-icon-button (click)="removeImage(i)"><mat-icon>delete</mat-icon></button>   
+                                <div *ngIf="uploadedAssetImages[i]">
+                                 
+                                     <img [src]="uploadedAssetImages[i]?.name" alt="img"  class="w-24 h-24"/>
+                                  </div>
+                            </div>   
+                                                        
+
+                   </div>
+                </div> -->
+                <div>
+                    <label for="images"></label>
+                    <input 
+                      type="file" 
+                      id="images" 
+                      (change)="onImageSelect($event)" 
+                      multiple 
+                      accept="image/*" 
+                      #fileInput
+                      hidden
+                    />
+                  </div>
+                  <button class="flex flex-col justify-center h-28 w-28 bg-gray-100 rounded-md items-center" (click)="triggerFileInput(fileInput)">
+                    <img src="../../../../assets/Asset Management Assets/Icon/Add Banner.svg" alt="" class="" />
+                    Add Image</button>
+                  <div class="image-preview">
+                    <div *ngFor="let img of uploadedAssetImages; let i = index" class="preview">
+                      <img [src]="img" alt="Preview" />
+                      <button type="button" (click)="removeImage(i)">X</button>
+                    </div>
+                  </div>
+            </div>
+                <span class="text-sm text-gray-500">Upload asset and warrenty images for future reference</span>
+              </div>
+            <mat-dialog-actions align="end">
+                <button type="submit"  class="bg-green-500 rounded-md text-white p-2 px-6 text-[0.8rem]"(click)="saveAsset(editForm )"
+                [disabled]="!(editForm.dirty || editForm.valid)">
+                Save</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</div>

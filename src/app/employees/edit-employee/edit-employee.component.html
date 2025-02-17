@@ -1,0 +1,303 @@
+<div class="py-8 px-[3%] h-auto">
+    <div class="flex flex-col gap-4 w-full">
+        <div class="flex justify-between">
+            <div class="relative">
+
+                <div class="px-6">
+                    <a class="cursor-pointer absolute top-[15%] left-0" (click)="goBack()"><svg width="7" height="10"
+                            viewBox="0 0 7 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.66699 0.834635L1.50033 5.0013L5.66699 9.16797" stroke="#1C1C1C"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg></a>
+                    <h1 class="font-bold">Edit Details</h1>
+                    <span class="text-[0.8rem] text-gray-500"> Easily update employees profile to keep everything
+                        current and accurate</span>
+                </div>
+
+
+            </div>
+
+            <div class="gap-2 ">
+                <button class="bg-white rounded-md p-2 px-4 text-[0.8rem] mx-2">Cancel</button>
+                <button type="submit" class="bg-blue-500 rounded-md p-2 px-6  text-white text-[0.8rem]" (click)="handleSaveForm(editForm)">Save</button>
+            </div>
+        </div>
+
+        <div class="bg-white p-4">
+            <div class="flex justify-center w-full relative">
+                <img [src]="this.uploadedImage" alt="" class="rounded-full w-28 h-28 " />
+
+                <div class="absolute top-[60%] left-[50%] bg-white rounded-full ">
+                    <input type="file" (change)="uploadImage($event)" #imageInput hidden/>
+                    <img src="../../../assets/Employees Assets/Icon/Camera.svg" alt="" (click)="triggerInput(imageInput)"
+                        class="rounded-full m-2 p-2 border-2 border-gray-100 border-solid" />
+                </div>
+            </div>
+
+
+            <div class="edit-form w-full px-16 py-4">
+                <mat-dialog-content>
+                    <form [formGroup]="editForm" class="mat-typography">
+
+                        <div class="flex flex-col py-2">
+                            <div class="flex w-full gap-4">
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Firstname</mat-label>
+                                    <input type="text" matInput formControlName="firstName"  required />
+                                    <mat-error
+                                        *ngIf="editForm.get('firstName')?.touched || editForm.get('firstName')?.dirty">
+                                        <span *ngIf="editForm.get('firstName')?.errors?.['required']">Firstname is
+                                            required</span>
+
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Lastname</mat-label>
+                                    <input type="text" matInput formControlName="lastName"  required />
+                                    <mat-error
+                                        *ngIf="editForm.get('lastName')?.touched || editForm.get('lastName')?.dirty">
+                                        <span *ngIf="editForm.get('lastName')?.errors?.['required']">Lastname is
+                                            required</span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex w-full gap-4 py-2">
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Official mail</mat-label>
+                                    <input type="text" matInput formControlName="officialMail" required />
+                                    <mat-error
+                                        *ngIf="editForm.get('officialMail')?.touched || editForm.get('offialMail')?.invalid">
+                                        <span *ngIf="editForm.get('officialMail')?.errors?.['required']">Official mail
+                                            is required</span>
+                                            <span *ngIf="editForm.get('officialMail')?.errors?.['pattern']">Invalid Mail</span>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Personal Mail</mat-label>
+                                    <input type="text" matInput formControlName="personalMail" required />
+                                    <mat-error
+                                        *ngIf="editForm.get('personalMail')?.touched || editForm.get('personalMail')?.invalid">
+                                        <span *ngIf="editForm.get('personalMail')?.errors?.['required']">
+                                            Personal Mail is required
+                                        </span>
+                                        <span *ngIf="editForm.get('personalMail')?.errors?.['pattern']">
+                                            Invalid Mail 
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+
+                            </div>
+
+                            <div class="flex w-full gap-4 py-2">
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Work Phone</mat-label>
+                                    <input type="number" matInput formControlName="workPhone" required />
+                                    <mat-error
+                                        *ngIf="editForm.get('workPhone')?.touched || editForm.get('workPhone')?.invalid">
+                                        <span *ngIf="editForm.get('workPhone')?.errors?.['required']">
+                                            Work Phone is required
+                                        </span>
+                                        <span *ngIf="editForm.get('workPhone')?.errors?.['required']">
+                                            Invalid Work Phone. Please enter a valid phone number
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Personal Phone</mat-label>
+                                    <input type="number" matInput formControlName="personalPhone" required />
+                                    <mat-error
+                                        *ngIf="editForm.get('personalPhone')?.touched || editForm.get('personalPhone')?.invalid">
+                                        <span *ngIf="editForm.get('personalPhone')?.errors?.['required']">
+                                            Personal Phone is required
+                                        </span>
+                                        <span *ngIf="editForm.get('personalPhone')?.errors?.['pattern']">
+                                            Invalid Personal Phone. Please enter a valid phone number
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="w-full py-2">
+                                <mat-form-field appearance="outline" class="w-full">
+                                    <mat-label>Address</mat-label>
+                                    <input type="text" matInput formControlName="address" required />
+                                    <mat-error
+                                        *ngIf="editForm.get('address')?.touched || editForm.get('address')?.invalid">
+                                        <span *ngIf="editForm.get('address')?.errors?.['required']">
+                                            Address is required
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex w-full gap-4 py-2">
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Designation</mat-label>
+                                    <input type="text" matInput formControlName="designation" required />
+                                    <mat-error
+                                        *ngIf="editForm.get('designation')?.touched || editForm.get('designation')?.invalid">
+                                        <span *ngIf="editForm.get('designation')?.errors?.['required']">
+                                            designation is required
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Department</mat-label>
+                                    <mat-select formControlName="department" required>
+                                        <mat-option *ngFor="let emp of employees; let i = index"
+                                            [value]="emp.department">
+                                            {{emp.department}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error
+                                        *ngIf="editForm.get('department')?.touched || editForm.get('department')?.invalid">
+                                        <span *ngIf="editForm.get('department')?.errors?.['required']">
+                                            designation is required
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+
+
+                            </div>
+
+                            <div class="flex w-full gap-4 py-2">
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Team</mat-label> 
+                                    <input type="text" matInput formControlName="team" required />
+                                    <mat-error *ngIf="editForm.get('team')?.touched || editForm.get('team')?.invalid">
+                                        <span *ngIf="editForm.get('team')?.errors?.['required']">
+                                            team is required
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+
+                                <mat-form-field appearance="outline" class="w-1/2">
+                                    <mat-label>Reporting Manager </mat-label>
+                                    <mat-select formControlName="reportingManager">
+                                        <mat-option *ngFor="let emp of employees; let i = index"
+                                            [value]="emp.reportingManager">
+                                            {{emp.reportingManager}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error
+                                        *ngIf="editForm.get('reportingManager')?.touched || editForm.get('reportingManager')?.invalid">
+                                        <span *ngIf="editForm.get('reportingManager')?.errors?.['required']">
+                                            team is required
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex w-full py-2">
+                                <mat-form-field appearance="outline" class="w-full">
+                                    <mat-label>Chat</mat-label>
+                                    <input type="text" matInput formControlName="chatId" required />
+                                    <mat-error
+                                        *ngIf="editForm.get('chatId')?.touched || editForm.get('chatId')?.invalid">
+                                        <span *ngIf="editForm.get('chatId')?.errors?.['required']">
+                                            chat is required
+                                        </span>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="flex justify-between gap-4   h-auto w-full py-2 ">
+                                <div class=" w-1/2 ">
+                                    <div
+                                    class="flex flex-col relative h-32 w-full border-2 border-gray-100 border-solid  p-2 items-center justify-center gap-4 ">
+
+                                    <div class="absolute top-[-10%] left-[5%] bg-white h-6 px-2">
+                                        <span class="text-sm">KYC Documents*</span>
+                                    </div>
+
+                                    <div class="flex justify-between w-full  h-auto p-2 bg-gray-100 rounded-md">
+                                        <input type="file" (change)="onFileSelectAadhar($event)" required #fileInput
+                                            hidden />
+                                        <span *ngIf="aadhar" class="text-[0.8rem]">
+                                            <img *ngIf="aadhar?.name?.toLowerCase()?.includes('.pdf')"
+                                                src="../../../assets/HR Policies Assets/Icons/Pdf.svg" alt="PDF Icon"
+                                                class="inline" />
+                                            <img *ngIf="(aadhar?.name?.toLowerCase()?.includes('.jpg') || aadhar?.name?.toLowerCase()?.includes('.png') || aadhar?.name?.toLowerCase()?.includes('jpeg'))"
+                                                src="../../../assets/Employees Assets/Icon/image-file-svgrepo-com.svg"
+                                                class="h-6  w-6 inline" alt="Default Icon" />
+                                            {{aadhar.name}}</span>
+                                        <button
+                                            class="  text-[0.8rem] text-blue-500 underline decoration-dashed underline-offset-4"
+                                            (click)="triggerInput(fileInput)">{{aadhar ? '+ Replace file' : '+ Upload
+                                            Aadhar'}} </button>
+
+                                    </div>
+
+
+                                    <div class="flex justify-between w-full h-auto p-2 bg-gray-100 rounded-md">
+                                        <input type="file" (change)="onFileSelectPan($event)" required #fileInput2
+                                            hidden />
+                                        <span *ngIf="pan" class="text-[0.8rem]">
+                                            <img *ngIf="pan?.name?.toLowerCase()?.includes('.pdf')"
+                                                src="../../../assets/HR Policies Assets/Icons/Pdf.svg" alt="PDF Icon"
+                                                class="inline" />
+                                            <img *ngIf="(pan?.name?.toLowerCase()?.includes('.jpg') || pan?.name?.toLowerCase()?.includes('.png') || pan?.name?.toLowerCase()?.includes('jpeg'))"
+                                                src="../../../assets/Employees Assets/Icon/image-file-svgrepo-com.svg"
+                                                class="h-6  w-6 inline" alt="Default Icon" />
+                                            {{pan.name}}</span>
+                                        <button
+                                            class="  text-[0.8rem] text-blue-500 underline decoration-dashed underline-offset-4"
+                                            (click)="triggerInput(fileInput2)">{{pan ? '+ Replace file' : '+ Upload
+                                            PanCard'}} </button>
+
+                                    </div>
+
+
+                                </div>
+                                <span class="text-[0.8rem] text-gray-500 px-2">pdf, png, jpeg, jpg file types accepted. Max file size is 5MB</span>   
+                                </div>
+
+                                <div class="w-1/2">
+                                    <div class="flex flex-col relative h-auto border-2 border-gray-100 border-solid  p-2">
+                                    <div class="absolute top-[-10%] left-[5%] bg-white h-6 px-2">
+                                        <span class="text-sm">Additional Documents</span>
+                                    </div>
+                                  
+
+                                    <div class="flex relative justify-between gap-2">
+                                        <div formArrayName="kycDocuments" class="w-[100%]">
+                                            <div *ngFor="let document of kycDocuments.controls; let i = index">
+                                                <div [formGroupName]="i" class="flex justify-between  h-auto p-2 mt-2 bg-gray-100 rounded-md  ">
+                                                    <input type="file" formControlName="value"
+                                                        (change)="onFileSelect($event)"  required #fileInput3 hidden />
+                                                    <div class="flex justify-between w-[100%]">
+                                                        <button (click)="triggerInput(fileInput3)" *ngIf="!selectedFiles[i]"
+                                                            class=" text-[0.8rem] text-blue-500 underline decoration-dashed underline-offset-4">
+                                                            + Upload Document </button>
+                                                            <span *ngIf="selectedFiles.length > 0 && selectedFiles[i]" class="text-[0.8rem]"> {{selectedFiles[i].name}}</span>
+                                                        <button (click)="removeKycDocument(i)"
+                                                            class=""><mat-icon>delete</mat-icon>
+                                                        </button>
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button mat-raised-button color="primary" (click)="addKycDocument()" class="w-max my-2">Add
+                                        Documents</button>
+                                </div>
+                                    <span class="text-gray-500 text-[0.8rem] px-2">pdf, png, jpeg, jpg file types accepted. Max file size is 5MB</span>
+                                    </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </mat-dialog-content>
+            </div>
+        </div>
+
+    </div>
+</div>

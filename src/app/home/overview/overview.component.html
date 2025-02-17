@@ -1,0 +1,720 @@
+<div class="row justify-between items-center mt-2">
+  <div class="col">
+    <h2 class="main_heading">Welcome, Rajesh Kumar</h2>
+    <p class="mt-1 text-gray-400">
+      Discover upcoming events and Stay Up-to-Date with Company News and
+      Announcements.
+    </p>
+  </div>
+  <div class="row gap-1 items-center">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 21 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-5 w-5 text-gray-500"
+    >
+      <path
+        d="M19.1887 5.91501L16.24 17.7538C16.03 18.6375 15.2425 19.25 14.3325 19.25H2.83499C1.51374 19.25 0.568755 17.955 0.962505 16.6862L4.64625 4.85629C4.9 4.03379 5.66126 3.46497 6.51876 3.46497H17.2812C18.1125 3.46497 18.8038 3.97247 19.0925 4.67247C19.2588 5.04872 19.2937 5.47751 19.1887 5.91501Z"
+        stroke="#777777"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+      ></path>
+      <path
+        d="M14 19.25H18.1825C19.3112 19.25 20.195 18.2962 20.1162 17.1675L19.25 5.25"
+        stroke="#777777"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+      <path
+        d="M8.47 5.5825L9.38001 1.80255"
+        stroke="#777777"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+      <path
+        d="M14.3325 5.59129L15.155 1.79382"
+        stroke="#777777"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+      <path
+        d="M6.73752 10.5H13.7375"
+        stroke="#777777"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+      <path
+        d="M5.86252 14H12.8625"
+        stroke="#777777"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
+    <p class="font-normal text-[1rem] text-gray-800">Monday, 12 June 2023</p>
+  </div>
+</div>
+
+<!-- BannerCards -->
+<div class="flex flex-col h-full md:flex-row gap-4 w-full md:h-85">
+  <div
+    class="relative my-4 w-[50%] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg"
+  >
+    <!-- Banner Display -->
+    <div class="relative w-full h-full group">
+      <!-- Banner Display -->
+      <div *ngIf="banners.length > 0" class="relative md:h-80">
+        <img
+          [src]="banners[currentIndex]"
+          class="w-full h-full object-fit rounded-lg"
+          alt="Banner"
+        />
+
+        <!-- Navigation Arrows (Hidden by default, visible on hover) -->
+        <button
+          *ngIf="banners.length > 1"
+          (click)="navigate('prev')"
+          class="absolute left-2 top-1/2 -translate-y-1/2 bg-white w-8 h-8 rounded-full p-2 shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="{1.5}"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+            />
+          </svg>
+        </button>
+        <button
+          *ngIf="banners.length > 1"
+          (click)="navigate('next')"
+          class="absolute right-2 top-1/2 -translate-y-1/2 bg-white w-8 h-8 rounded-full p-2 shadow-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="{1.5}"
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </button>
+
+        <!-- Action Buttons (Add & Delete, Hidden by default, visible on hover) -->
+        <div
+          class="absolute top-2 right-2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          <button
+            (click)="fileInput.click()"
+            class="bg-white text-blue-500 p-2 w-8 h-8 rounded-full shrink-0 shadow-md hover:bg-blue-50 flex items-center justify-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="{1.5}"
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+          </button>
+          <button
+            (click)="confirmDelete(currentIndex)"
+            class="bg-white text-red-500 p-2 w-8 h-8 rounded-full shadow-md hover:bg-red-50 flex items-center justify-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="{1.5}"
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State / Add Banner -->
+    <div
+      *ngIf="banners.length === 0"
+      class="absolute inset-0 flex flex-col items-center justify-center h-full w-full border-2 border-dashed border-gray-300 rounded-lg cursor-pointer"
+      (click)="fileInput.click()"
+    >
+      <div
+        class="text-white flex items-center justify-center bg-blue-500 rounded-full w-16 h-16 mb-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="{1.5}"
+          stroke="currentColor"
+          class="size-12"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
+          />
+        </svg>
+      </div>
+      <p class="text-base font-semibold mb-1">Add your banner</p>
+      <p class="text-sm text-gray-500">Optimal Dimensions 540 x 360px</p>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div
+      *ngIf="banners.length > 1"
+      class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4 shrink-0 bg-gray-100 py-0.5 px-3 md:px-8 rounded-full shadow-sm sm:py-1 sm:px-5"
+    >
+      <ng-container *ngFor="let banner of banners; let i = index">
+        <button
+          (click)="setCurrentBanner(i)"
+          class="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full transition-colors duration-200"
+          [ngClass]="i === currentIndex ? 'bg-blue-500' : 'bg-gray-300'"
+        ></button>
+      </ng-container>
+    </div>
+
+    <!-- File Input (Hidden) -->
+    <input
+      type="file"
+      #fileInput
+      (change)="onFileSelected($event)"
+      accept="image/*"
+      class="hidden"
+    />
+
+    <!-- Delete Confirmation Modal (Inside Component) -->
+    <div
+      *ngIf="showDeleteModal"
+      class="absolute inset-0 flex mt-10 items-start justify-center rounded-lg z-10"
+    >
+      <div class="bg-white rounded-lg shadow-xl max-w-sm w-full mx-4">
+        <!-- Modal Header with Reduced Padding -->
+        <div
+          class="flex items-center justify-between px-4 py-2 rounded-lg border-b bg-gray-100 border-gray-300"
+        >
+          <p class="text-base font-normal">Delete</p>
+          <button
+            (click)="closeModal()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Modal Body with Reduced Margin -->
+        <div class="p-3">
+          <p class="text-sm text-gray-700 mb-3">
+            Are you sure you want to delete this banner?
+          </p>
+
+          <div class="flex justify-start space-x-3">
+            <button
+              (click)="deleteBanner()"
+              class="px-4 py-2 bg-red-500 text-white text-sm font-semibold rounded-md hover:bg-red-600"
+            >
+              Delete
+            </button>
+            <button
+              (click)="closeModal()"
+              class="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded-md hover:bg-gray-300"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="white-box my-4 py-2">
+    <h2
+      class="text-lg font-medium text-gray-800 pb-1 px-4 border-b-2 border-solid divide-y-2"
+    >
+      Quick Links
+    </h2>
+
+    <ul class="pt-4 px-4 flex flex-col gap-2 justify-around">
+      <li class="font-normal text-[1rem] mb-2 cursor-pointer items-center">
+        <a class="row gap-2" routerLink="./my-documents"
+          ><svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-5 w-5 text-blue-500"
+          >
+            <path stroke="none" d="M0 0h24v24H0z"></path>
+            <rect x="5" y="3" width="14" height="18" rx="2"></rect>
+            <line x1="9" y1="7" x2="15" y2="7"></line>
+            <line x1="9" y1="11" x2="15" y2="11"></line>
+            <line x1="9" y1="15" x2="13" y2="15"></line>
+          </svg>
+          Add Form 16</a
+        >
+      </li>
+      <li class="font-normal text-[1rem] mb-2 cursor-pointer items-center">
+        <a class="row gap-2" routerLink="./my-documents"
+          ><svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-5 w-5 text-blue-500"
+          >
+            <path stroke="none" d="M0 0h24v24H0z"></path>
+            <path
+              d="M15 21h-9a3 3 0 0 1 -3 -3v-1h10v2a2 2 0 0 0 4 0v-14a2 2 0 1 1 2 2h-2m2 -4h-11a3 3 0 0 0 -3 3v11"
+            ></path>
+            <line x1="9" y1="7" x2="13" y2="7"></line>
+            <line x1="9" y1="11" x2="13" y2="11"></line>
+          </svg>
+          Add Pay Slip</a
+        >
+      </li>
+      <li class="font-normal text-[1rem] mb-2 cursor-pointer items-center">
+        <a class="row gap-2" routerLink="./hr-policies"
+          ><svg
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="h-5 w-5 text-blue-500"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+            ></path>
+          </svg>
+          Add HR Policies</a
+        >
+      </li>
+      <li class="font-normal text-[1rem] mb-2 cursor-pointer items-center">
+        <a class="row gap-2" routerLink="./hr-policies">
+          <svg
+            class="h-5 w-5 text-blue-500"
+            viewBox="0 0 21 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13 16.5C13 14.2909 10.3137 12.5 7 12.5C3.68629 12.5 1 14.2909 1 16.5M17 13.5V10.5M17 10.5V7.5M17 10.5H14M17 10.5H20M7 9.5C4.79086 9.5 3 7.70914 3 5.5C3 3.29086 4.79086 1.5 7 1.5C9.20914 1.5 11 3.29086 11 5.5C11 7.70914 9.20914 9.5 7 9.5Z"
+              stroke="#3D89FC"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Add Employee</a
+        >
+      </li>
+      <li class="font-normal text-[1rem] mb-2 cursor-pointer items-center">
+        <a class="row gap-2" routerLink="./hr-policies">
+          <svg
+            class="h-5 w-5 text-blue-500"
+            viewBox="0 0 16 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 15.5H11M5 12.5H11M9.00038 1.50087C8.90484 1.5 8.79738 1.5 8.67471 1.5H4.2002C3.08009 1.5 2.51962 1.5 2.0918 1.71799C1.71547 1.90973 1.40973 2.21547 1.21799 2.5918C1 3.01962 1 3.58009 1 4.7002V16.3002C1 17.4203 1 17.9801 1.21799 18.4079C1.40973 18.7842 1.71547 19.0905 2.0918 19.2822C2.51921 19.5 3.079 19.5 4.19694 19.5L11.8031 19.5C12.921 19.5 13.48 19.5 13.9074 19.2822C14.2837 19.0905 14.5905 18.7842 14.7822 18.4079C15 17.9805 15 17.4215 15 16.3036V7.82568C15 7.70302 14.9999 7.59553 14.999 7.5M9.00038 1.50087C9.28583 1.50348 9.46572 1.51407 9.63818 1.55547C9.84225 1.60446 10.0379 1.68526 10.2168 1.79492C10.4186 1.91857 10.5918 2.09181 10.9375 2.4375L14.063 5.56298C14.4089 5.90889 14.5809 6.08136 14.7046 6.28319C14.8142 6.46214 14.8953 6.65726 14.9443 6.86133C14.9857 7.03379 14.9964 7.21454 14.999 7.5M9.00038 1.50087L9 4.30021C9 5.42031 9 5.98015 9.21799 6.40797C9.40973 6.7843 9.71547 7.09048 10.0918 7.28223C10.5192 7.5 11.079 7.5 12.1969 7.5H14.999"
+              stroke="#3D89FC"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Add New Opening</a
+        >
+      </li>
+      <li class="font-normal text-[1rem] mb-2 cursor-pointer items-center">
+        <a class="row gap-2" routerLink="./hr-policies">
+          <svg
+            class="h-5 w-5 text-blue-500"
+            viewBox="0 0 22 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 15.5H21M3 3.5C3 2.96957 3.21071 2.46086 3.58579 2.08579C3.96086 1.71071 4.46957 1.5 5 1.5H17C17.5304 1.5 18.0391 1.71071 18.4142 2.08579C18.7893 2.46086 19 2.96957 19 3.5V12.5H3V3.5Z"
+              stroke="#3D89FC"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Add Asset</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="col mb-4 md:flex-row gap-4 w-full">
+  <div class="white-box">
+    <div class="row justify-between items-center py-2 px-3">
+      <h2 class="card_head_font">Upcoming Holiday</h2>
+      <a
+        routerLink="./holiday-calendar"
+        class="mt-1 text-sm text-primary font-medium cursor-pointer hover:underline"
+        >View All Holidays</a
+      >
+    </div>
+    <div class="row gap-2 py-2 px-3">
+      <div
+        class="col gap-0 font-semibold border border-gray-200 text-center rounded-lg px-2"
+      >
+        <div class="text-red-500 text-md">MAY</div>
+        <div class="text-md">01</div>
+      </div>
+      <div class="col gap-0">
+        <h4 class="text-lg font-medium">Labour Day</h4>
+        <p class="mt-1 text-sm font-medium text-gray-400">Wed, 1 May, 2024</p>
+      </div>
+    </div>
+  </div>
+  <div class="white-box">
+    <div class="row justify-between items-center py-2 px-3">
+      <h2 class="card_head_font">Upcoming Event</h2>
+      <a
+        routerLink="./upcoming-events"
+        class="mt-1 text-sm text-primary font-medium cursor-pointer hover:underline"
+        >View All Events</a
+      >
+    </div>
+    <div class="row gap-2 py-2 px-3">
+      <div
+        class="col gap-0 font-semibold border border-gray-200 text-center rounded-lg px-2"
+      >
+        <div class="text-red-500 text-md">MAY</div>
+        <div class="text-md">01</div>
+      </div>
+      <div class="col gap-0">
+        <h4 class="text-lg font-medium">Employee Training</h4>
+        <p class="mt-1 text-sm font-medium text-gray-400">Wed, 1 May, 2024</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col md:flex-row gap-4 mb-4 w-full">
+  <div class="white-box">
+    <h2 class="card_head_font p-2">Birthdays</h2>
+    <div class="col gap-2 p-2">
+      <div class="text-sm font-medium">Birthdays Today</div>
+      <div class="row gap-2 items-center">
+        <img src="./assets/photos/B'day_icon.jpg" alt="" />
+        <p class="text-xs font-medium text-gray-400">No Birthdays Today</p>
+      </div>
+      <div class="text-sm font-medium text-gray-400">In next 30 Days</div>
+      <div class="row gap-2">
+        <div class="col text-center">
+          <img
+            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+            alt="avatar"
+            class="object-cover w-12 h-12 self-center mx-2 rounded-full"
+          />
+          <p class="text-xs font-medium">Hanna Culhane</p>
+          <p class="text-xs font-medium text-gray-400">09 May</p>
+        </div>
+        <div class="col text-center">
+          <img
+            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+            alt="avatar"
+            class="object-cover w-12 h-12 self-center mx-2 rounded-full"
+          />
+          <p class="text-xs font-medium">Hanna Culhane</p>
+          <p class="text-xs font-medium text-gray-400">09 May</p>
+        </div>
+        <div class="col text-center">
+          <img
+            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+            alt="avatar"
+            class="object-cover w-12 h-12 self-center mx-2 rounded-full"
+          />
+          <p class="text-xs font-medium">Hanna Culhane</p>
+          <p class="text-xs font-medium text-gray-400">09 May</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="white-box">
+    <h2 class="card_head_font p-2">Anniversaries</h2>
+    <div class="col gap-2 p-2">
+      <div class="text-sm font-medium">Anniversaries Today</div>
+      <div class="row gap-2 items-center">
+        <img src="./assets/photos/anniversary.jpg" alt="" />
+        <p class="text-xs font-medium text-gray-400">No Anniversaries Today</p>
+      </div>
+      <div class="text-sm font-medium text-gray-400">In next 30 Days</div>
+      <div class="row gap-3">
+        <div class="col text-center">
+          <img
+            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+            alt="avatar"
+            class="object-cover w-12 h-12 self-center mx-2 rounded-full"
+          />
+          <p class="text-xs font-medium">Hanna Culhane</p>
+          <p class="text-xs font-medium text-gray-400">09 May</p>
+        </div>
+        <div class="col text-center">
+          <img
+            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+            alt="avatar"
+            class="object-cover w-12 h-12 self-center mx-2 rounded-full"
+          />
+          <p class="text-xs font-medium">Hanna Culhane</p>
+          <p class="text-xs font-medium text-gray-400">09 May</p>
+        </div>
+        <div class="col text-center">
+          <img
+            src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=634&amp;q=80"
+            alt="avatar"
+            class="object-cover w-12 h-12 self-center mx-2 rounded-full"
+          />
+          <p class="text-xs font-medium">Hanna Culhane</p>
+          <p class="text-xs font-medium text-gray-400">09 May</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col md:flex-row gap-4 w-full">
+  <div class="col gap-3 w-full">
+    <div class="text-lg font-medium">Announcements</div>
+    <div
+      *ngIf="!newPost"
+      class="bg-white col gap-3 text-center rounded-lg shadow-lg p-3"
+    >
+      <div class="text-sm font-normal text-gray-400">
+        Compose and Publish a New Company Announcement
+      </div>
+      <button
+        type="button"
+        (click)="createPost()"
+        class="px-5 py-1 self-center text-sm font-medium text-center text-white bg-primary rounded-sm hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
+      >
+        + Create Post
+      </button>
+    </div>
+    <div
+      *ngIf="newPost"
+      class="bg-white rounded-lg shadow-lg divide-y-2 p-2 col w-full"
+    >
+      <input
+        type="text"
+        placeholder="Title of the Post/Announcement"
+        class="border-0 active:border-0 text-sm p-2"
+      />
+      <textarea
+        name=""
+        id=""
+        placeholder="Details of Post/Announcement"
+        class="border-0 active:border-0 text-sm p-2"
+        rows="5"
+      ></textarea>
+      <div class="col gap-3">
+        <div class="row justify-between p-2">
+          <div class="row items-center gap-2">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.00003 11.0001C1 10.957 1 10.9126 1 10.8668V3.13346C1 2.38673 1 2.01308 1.14532 1.72786C1.27316 1.47698 1.47698 1.27316 1.72786 1.14532C2.01308 1 2.38673 1 3.13346 1H10.8668C11.6135 1 11.9867 1 12.2719 1.14532C12.5228 1.27316 12.727 1.47698 12.8548 1.72786C13 2.0128 13 2.386 13 3.13127V10.8687C13 11.1921 13 11.4453 12.9881 11.6516M1.00003 11.0001C1.00055 11.6589 1.00891 12.0039 1.14532 12.2716C1.27316 12.5225 1.47698 12.727 1.72786 12.8548C2.0128 13 2.386 13 3.13127 13H10.8691C11.6143 13 11.987 13 12.2719 12.8548C12.5228 12.727 12.727 12.5225 12.8548 12.2716C12.937 12.1103 12.9727 11.9208 12.9881 11.6516M1.00003 11.0001L4.17865 7.29167L4.17959 7.29064C4.46151 6.96173 4.60271 6.797 4.77018 6.73763C4.91729 6.68548 5.07791 6.68669 5.22428 6.74089C5.39109 6.80264 5.53004 6.96925 5.80794 7.30273L7.58872 9.43967C7.84597 9.74837 7.97534 9.90361 8.13242 9.96592C8.27097 10.0209 8.42377 10.0271 8.56673 9.98488C8.72947 9.93686 8.87272 9.79363 9.15918 9.50716L9.49056 9.17578C9.78222 8.88412 9.92806 8.73839 10.0931 8.69076C10.2381 8.64892 10.3931 8.6579 10.5326 8.7155C10.6913 8.78107 10.8201 8.94158 11.0778 9.26367L12.9881 11.6516M12.9881 11.6516L13 11.6664M9 5C8.63181 5 8.33333 4.70152 8.33333 4.33333C8.33333 3.96514 8.63181 3.66667 9 3.66667C9.36819 3.66667 9.66667 3.96514 9.66667 4.33333C9.66667 4.70152 9.36819 5 9 5Z"
+                stroke="#3D89FC"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <a
+              routerLink="./holiday-calendar"
+              class="text-sm text-primary font-normal cursor-pointer hover:underline"
+              >Add Media</a
+            >
+          </div>
+          <div class="row items-center gap-2">
+            <input type="checkbox" /><label for="" class="text-sm font-medium"
+              >Requires Acknoledgement</label
+            >
+          </div>
+        </div>
+        <div class="row gap-2 justify-center p-2">
+          <button
+            type="button"
+            (click)="createPost()"
+            class="px-4 py-1 text-sm font-medium text-center text-gray-400 bg-gray-300 rounded-md hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            (click)="createPost()"
+            class="px-4 py-1 text-sm font-medium text-center text-white bg-primary rounded-md hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
+          >
+            Post
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col gap-3 w-full">
+    <div class="text-lg font-medium">Polls</div>
+    <div
+      *ngIf="!newPoll"
+      class="bg-white col gap-3 text-center rounded-lg shadow-lg p-3 hidden"
+    >
+      <div class="text-sm font-normal text-gray-400">
+        Create a New Poll to Conduct Surveys, Gather Feedback and more
+      </div>
+      <button
+        type="button"
+        (click)="createPoll()"
+        class="px-5 py-1 self-center text-sm font-medium text-center text-white bg-primary rounded-sm hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
+      >
+        + Create Poll
+      </button>
+    </div>
+    <div
+      *ngIf="newPoll"
+      class="bg-white rounded-lg shadow-lg divide-y-2 w-full p-2"
+    >
+      <input type="text" placeholder="Title of the Poll" class="text-sm p-2" />
+      <div class="col gap-2">
+        <div id="row" class="row items-center text-sm p-2 gap-2 w-full">
+          <input
+            type="text"
+            placeholder="Add Option"
+            class="border border-gray-400 rounded-sm w-1/2 p-1"
+          />
+          <button id="DeleteRow">
+            <svg
+              width="16"
+              height="18"
+              viewBox="0 0 16 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.99967 4V13.8333C2.99967 14.7668 2.99967 15.2331 3.18133 15.5897C3.34112 15.9033 3.5959 16.1587 3.90951 16.3185C4.26568 16.5 4.73217 16.5 5.66377 16.5H10.3356C11.2672 16.5 11.733 16.5 12.0892 16.3185C12.4028 16.1587 12.6584 15.9033 12.8182 15.5897C12.9997 15.2335 12.9997 14.7675 12.9997 13.8359V4M2.99967 4H4.66634M2.99967 4H1.33301M4.66634 4H11.333M4.66634 4C4.66634 3.22343 4.66634 2.83534 4.79321 2.52905C4.96236 2.12067 5.28661 1.79602 5.69499 1.62687C6.00127 1.5 6.38977 1.5 7.16634 1.5H8.83301C9.60958 1.5 9.99786 1.5 10.3041 1.62687C10.7125 1.79602 11.0369 2.12067 11.2061 2.52905C11.3329 2.83534 11.333 3.22343 11.333 4M11.333 4H12.9997M12.9997 4H14.6663"
+                stroke="#F14545"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div id="newinput"></div>
+        <button
+          id="rowAdder"
+          class="text-sm text-primary font-normal self-start mx-2 cursor-pointer"
+        >
+          + Add Option
+        </button>
+        <div class="row justify-between p-2">
+          <div class="row items-center gap-2 text-sm">
+            <label class="text-sm font-medium" for="">Poll Expires On</label>
+            <input
+              type="date"
+              name=""
+              id=""
+              class="border border-gray-400 rounded-sm focus:ring-transparent"
+            />
+          </div>
+          <div class="row items-center gap-2">
+            <input type="checkbox" /><label for="" class="text-sm font-medium"
+              >Allow Multiple Files</label
+            >
+          </div>
+        </div>
+        <div class="row gap-2 justify-center p-2">
+          <button
+            type="button"
+            (click)="createPoll()"
+            class="px-4 py-1 text-sm font-medium text-center text-gray-400 bg-gray-300 rounded-md hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            (click)="createPoll()"
+            class="px-4 py-1 text-sm font-medium text-center text-white bg-primary rounded-md hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
+          >
+            Post
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Post and Poll -->
+<div class="flex flex-col md:flex-row gap-4 justify-between">
+  <div class="mt-5 w-full md:w-1/2">
+    <app-post></app-post>
+  </div>
+  <div class="mt-5 w-full md:w-1/2">
+    <app-poll></app-poll>
+  </div>
+</div>

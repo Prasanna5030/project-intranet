@@ -1,0 +1,122 @@
+.custom-calendar-card {
+  width: 30%;
+  max-width: 450px;
+  background: #ffffff;
+  border-radius: 12px;
+
+  ::ng-deep {
+    .mat-calendar {
+      font-family: Arial, sans-serif;
+
+      // Header Section
+      .mat-calendar-header {
+        padding: 0 0 16px 0;
+
+        .mat-calendar-controls {
+          margin: 0;
+
+          .mat-calendar-period-button {
+            padding: 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: #000000;
+          }
+
+          .mat-calendar-arrow {
+            display: none;
+          }
+
+          .mat-calendar-previous-button,
+          .mat-calendar-next-button {
+            color: #000000;
+
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+
+      // Calendar Table Header
+      .mat-calendar-table-header {
+        th {
+          height: 32px;
+          color: #000000;
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+
+      // Calendar Body
+      .mat-calendar-body {
+        min-height: unset;
+
+        .mat-calendar-body-label {
+          display: none;
+        }
+
+        .mat-calendar-body-cell {
+          height: 36px;
+          position: relative;
+
+          .mat-calendar-body-cell-content {
+            height: 32px;
+            width: 32px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 2px;
+
+            &:hover {
+              background-color: #e0f7fa;
+            }
+          }
+
+          // Selected Date
+          &.mat-calendar-body-selected {
+            & > .mat-calendar-body-cell-content {
+              background-color: #1677ff;
+              color: #ffffff;
+              border-radius: 4px;
+            }
+          }
+
+          // Today's Date
+          &.mat-calendar-body-today:not(.mat-calendar-body-selected) {
+            & > .mat-calendar-body-cell-content {
+              border: 2px solid #1677ff;
+              background-color: transparent;
+              border-radius: 4px;
+            }
+          }
+
+          // Disabled Dates
+          &.mat-calendar-body-disabled > .mat-calendar-body-cell-content {
+            color: #cccccc;
+          }
+        }
+      }
+
+      // Calendar Content
+      .mat-calendar-content {
+        padding: 0;
+        margin: 0 8px;
+      }
+
+      .mat-calendar-table {
+        width: 100%;
+        border-spacing: 0;
+      }
+    }
+  }
+}
+
+
+.custom-card{
+  width:30%;
+  height: auto;
+}

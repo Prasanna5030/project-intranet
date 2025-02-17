@@ -1,0 +1,308 @@
+/* Custom input styling */
+.custom-input {
+  @apply w-full border-gray-300 focus:border-primary focus:ring-1 focus:ring-primary;
+}
+
+/* Override Material Form Field Styles */
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  @apply border-primary;
+}
+
+.mat-form-field-invalid .mat-form-field-outline-thick {
+  @apply border-red-500;
+}
+
+// Modal styles
+.fixed.inset-0.z-50 {
+  .bg-black {
+    backdrop-filter: blur(4px);
+  }
+
+  // Modal container
+  .relative {
+    background: white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px;
+  }
+
+  // Modal header
+  .px-6.py-4 {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      color: #111827;
+    }
+
+    p {
+      color: #6b7280;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+  }
+
+  // Form fields styling
+  // Material Form Field Custom Styles
+  ::ng-deep {
+    .mat-form-field {
+      width: 100%;
+
+      // Remove default Material underline animation
+      .mat-form-field-underline {
+        display: none;
+      }
+
+      // Outline styles
+      .mat-form-field-appearance-outline {
+        .mat-form-field-outline {
+          color: #e5e7eb;
+
+          &-thick {
+            color: #e5e7eb;
+          }
+        }
+
+        // Focused outline color
+        &.mat-focused .mat-form-field-outline-thick {
+          color: #2563eb;
+        }
+      }
+
+      // Label styles
+      .mat-form-field-label {
+        color: #6b7280 !important;
+        font-size: 14px;
+
+        &.mat-floating-label {
+          transform: translateY(-1.5em) scale(0.75);
+        }
+      }
+
+      // Required asterisk
+      .mat-form-field-required-marker {
+        color: #ef4444;
+      }
+
+      // Input text
+      .mat-input-element {
+        color: #111827;
+        font-size: 14px;
+        padding: 4px 0;
+
+        &::placeholder {
+          color: #9ca3af;
+        }
+      }
+
+      // Select styles
+      .mat-select {
+        font-size: 14px;
+
+        .mat-select-value {
+          color: #111827;
+        }
+
+        .mat-select-arrow {
+          color: #6b7280;
+        }
+      }
+
+      // Textarea styles
+      textarea.mat-input-element {
+        padding: 8px 0;
+        min-height: 80px;
+        resize: none;
+      }
+
+      // Outline border radius
+      .mat-form-field-outline {
+        border-radius: 8px;
+
+        & > * {
+          border-radius: 8px;
+        }
+      }
+
+      // Wrapper padding
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+        margin: 0;
+      }
+
+      // Infix padding
+      .mat-form-field-infix {
+        padding: 0.75em 0;
+        border-top: 0;
+      }
+
+      // Prefix & Suffix spacing
+      .mat-form-field-prefix,
+      .mat-form-field-suffix {
+        color: #6b7280;
+        top: 0.25em;
+      }
+    }
+
+    // Error styles
+    .mat-form-field-invalid {
+      .mat-form-field-outline {
+        color: #ef4444;
+      }
+
+      .mat-form-field-label {
+        color: #ef4444 !important;
+      }
+
+      .mat-error {
+        color: #ef4444;
+        font-size: 12px;
+      }
+    }
+
+    // Select panel customization
+    .mat-select-panel {
+      background: white;
+      border-radius: 8px !important;
+      margin-top: 4px;
+
+      .mat-option {
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 16px;
+
+        &.mat-selected:not(.mat-option-multiple) {
+          background: rgba(37, 99, 235, 0.1);
+        }
+
+        &:hover:not(.mat-option-disabled) {
+          background: rgba(37, 99, 235, 0.05);
+        }
+      }
+    }
+  }
+
+  // Form field spacing
+  .mat-form-field {
+    margin-bottom: 16px;
+  }
+
+  // Custom form field container
+  .form-field-container {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  // Add these styles to your component's styles
+  :host ::ng-deep {
+    // Override Material's default outline thickness
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+      .mat-form-field-outline-start,
+      .mat-form-field-outline-gap,
+      .mat-form-field-outline-end {
+        border-width: 1px !important;
+      }
+    }
+
+    // Focused state
+    .mat-focused {
+      .mat-form-field-outline {
+        .mat-form-field-outline-start,
+        .mat-form-field-outline-gap,
+        .mat-form-field-outline-end {
+          border-width: 2px !important;
+          border-color: #2563eb !important;
+        }
+      }
+    }
+  }
+
+  // Submit button
+  button[type="submit"] {
+    background: #2bc167;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #2bc167;
+    }
+  }
+
+  // Close button
+  button[class*="text-gray-500"] {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      color: #111827;
+    }
+  }
+
+  // Scrollbar styling
+  .overflow-y-auto {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f3f4f6;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #d1d5db;
+      border-radius: 3px;
+
+      &:hover {
+        background: #9ca3af;
+      }
+    }
+
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f3f4f6;
+  }
+}
+
+// Form layout
+.space-y-3 {
+  > * {
+    margin-bottom: 16px;
+  }
+}
+
+// Grid layout adjustments
+.grid.grid-cols-1 {
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+// Modal content padding
+.p-6.space-y-3 {
+  padding: 24px;
+}
+
+// Form field heights
+::ng-deep {
+  .mat-form-field-flex {
+    min-height: 48px;
+  }
+
+  textarea.mat-input-element {
+    min-height: 80px;
+  }
+}

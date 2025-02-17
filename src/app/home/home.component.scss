@@ -1,0 +1,35 @@
+$primary-color: #1677ff;
+$inactive-color: #718096;
+$border-color: #e2e8f0;
+
+.flex {
+  display: flex;
+  position: relative;
+}
+
+.border-b {
+  border-color: $border-color;
+}
+
+/* The sliding border */
+.slider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: $primary-color; /* Match your primary color */
+  transition: transform 0.3s ease, width 0.3s ease; /* Smooth sliding and resizing */
+  width: 0; /* Will be dynamically set */
+}
+
+/* Individual tabs */
+.cursor-pointer {
+  cursor: pointer;
+  position: relative;
+  color: #718096; /* Default inactive color */
+  transition: color 0.3s ease; /* Smooth text color change */
+}
+
+.text-primary {
+  color: $primary-color; /* Active tab color */
+}

@@ -1,0 +1,108 @@
+<div class="min-h-screen bg-gray-100 py-4 px-2 sm:px-4 lg:px-6">
+  <div class="mx-auto max-w-4xl bg-white rounded-sm shadow-lg">
+    <div class="p-4">
+      <!-- Job Title with back button -->
+      <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center">
+          <button (click)="goBack()" class="text-gray-600 hover:text-gray-800">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-6 mr-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+          <h1 class="text-xl font-medium text-red-500">{{ jobData.title }}</h1>
+        </div>
+
+        <button
+          (click)="onJobViewApplication()"
+          class="bg-primary text-white text-sm px-4 py-2 rounded-full hover:bg-blue-600"
+        >
+          View applications
+        </button>
+      </div>
+
+      <!-- Job Details Container -->
+      <div class="pl-11">
+        <!-- Job Details -->
+        <div class="gap-6">
+          <div class="mb-4">
+            <p class="text-black font-medium">
+              Experience:
+              <span class="font-normal text-sm text-gray-500">{{
+                jobData.experience
+              }}</span>
+            </p>
+          </div>
+          <div class="mb-4">
+            <p class="text-black font-medium">
+              Expected Notice Period:
+              <span class="font-normal text-sm text-gray-500">{{
+                jobData.noticePeriod
+              }}</span>
+            </p>
+          </div>
+          <div class="mb-4">
+            <p class="text-black font-medium">
+              Opportunity Type:
+              <span class="font-normal text-sm text-gray-500">{{
+                jobData.opportunityType
+              }}</span>
+            </p>
+          </div>
+          <div class="mb-4">
+            <p class="text-black font-medium">
+              Location:
+              <span class="font-normal text-sm text-gray-500">{{
+                jobData.location
+              }}</span>
+            </p>
+          </div>
+          <div class="mb-4">
+            <p class="text-black font-medium">
+              Job Type:
+              <span class="font-normal text-sm text-gray-500">{{
+                jobData.jobType
+              }}</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Key Responsibilities -->
+        <div class="mt-8">
+          <h2 class="text-xl font-medium mb-4">Key Responsibilities:</h2>
+          <ul class="list-disc pl-6 space-y-3">
+            <li
+              *ngFor="let resp of jobData.responsibilities"
+              class="text-gray-500 text-sm"
+            >
+              {{ resp }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Must-Have Skills -->
+        <div class="mt-8">
+          <h2 class="text-xl font-medium mb-4">Must-Have Skills:</h2>
+          <ul class="list-disc pl-6 space-y-3">
+            <li
+              *ngFor="let skill of jobData.skills"
+              class="text-gray-500 text-sm"
+            >
+              {{ skill }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

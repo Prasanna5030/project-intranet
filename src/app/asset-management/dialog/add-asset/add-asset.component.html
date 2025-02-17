@@ -1,0 +1,161 @@
+<div class="flex flex-col  m-2">
+    <div class="flex justify-between">
+        <div class="">
+            <h1 class="font-semibold text-[1.125rem]">Add New Asset</h1>
+            <span class="font-normal text-[0.9rem]">Easily add and track details of new assets in the company inventory.</span>
+        </div>
+        <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+    </div>
+
+    <div class="add-asset-form mt-4 ">
+        <form [formGroup]="addNewAssetForm" >
+
+           <div class="flex flex-col gap-2">
+            <div class="flex justify-between  gap-4">
+                <mat-form-field appearance="outline" class="custom-form-field">
+                    <mat-label>Asset Category</mat-label>
+
+                    <mat-select (openedChange)="onDropdownOpened($event)">
+                        <mat-option>
+                            <input type="text"
+                                class="custom-width p-2  border w-[100%]  rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                                placeholder="Search Categories" (input)="filterCategories($event)"
+                                (click)="$event.stopPropagation()" />
+                        </mat-option>
+                        <mat-option *ngFor="let category of filteredCategories; let i = index"
+                            (click)="selectCategory(category)" [value]="category">
+                            {{category}}
+                        </mat-option>
+
+                        <mat-option class="w-full">
+                            <div class=" flex flex-col h-22 items-center gap-2 custom-width">
+                                <input type="text" placeholder="Enter New Category" [formControl]="newCategory"
+                                    (click)="$event.stopPropagation()"
+                                    class="w-[100%] p-2 mt-1 border-2 border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100" />
+                                <button class="text-[0.8rem] bg-blue-500 p-1 rounded-md text-white custom-width"
+                                    color="primary" (click)="addNewCategory($event) " [disabled]="!newCategory.value">
+                                    + Add New Category
+                                </button>
+                            </div>
+
+                        </mat-option>
+
+                    </mat-select>
+                    <mat-error
+                    *ngIf="addNewAssetForm.get('assetCategory')?.touched && addNewAssetForm.get('assetCategory')?.invalid">Asset
+                    Category is required</mat-error>
+
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline" class="custom-form-field">
+                    <mat-label> Asset Id </mat-label>
+                    <input type="text" matInput formControlName="assetId" required />
+                    <mat-error
+                        *ngIf="addNewAssetForm.get('assetId')?.touched && addNewAssetForm.get('assetId')?.invalid">Asset
+                        Id is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="flex justify-between gap-4">
+                <mat-form-field class="custom-form-field" appearance="outline">
+                    <mat-label>Purchase Date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="purchaseDate">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error
+                        *ngIf="addNewAssetForm.get('purchaseDate')?.touched && addNewAssetForm.get('purchaseDate')?.errors?.['required']">
+
+                        This field is required
+
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="custom-form-field">
+                    <mat-label>Cost</mat-label>
+                    <input type="number" matInput formControlName="cost" />
+                    <mat-error *ngIf="addNewAssetForm.get('cost')?.touched && addNewAssetForm.get('cost')?.invalid">
+                     
+                    <span *ngIf="addNewAssetForm.get('cost')?.errors?.['required']">
+                        Cost is required
+                    </span> 
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="flex justify-between  gap-4">
+                <mat-form-field appearance="fill" class="custom-form-field" appearance="outline">
+                    <mat-label>Warrenty Expiry Date</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="warrentyExpiryDate">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                    <mat-error
+                        *ngIf="addNewAssetForm.get('warrentyExpiryDate')?.touched && addNewAssetForm.get('warrentyExpiryDate')?.errors?.['required']">
+
+                        This field is required
+
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="custom-form-field">
+                    <mat-label>Assignee</mat-label>
+                    <mat-select formControlName="assignee" [value]="assignee">
+                        <mat-option>
+                            <input type="text"
+                                class="custom-width p-2  border w-[100%] border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 "
+                                placeholder="Search Assignee" (input)="filterAssignee($event)"
+                                (click)="$event.stopPropagation()" />
+                        </mat-option>
+                        <mat-option *ngFor="let item of filteredAssignee ; let i = index" [value]="assignee[i]">
+                            {{item}}
+                        </mat-option>
+
+                    </mat-select>
+                    <mat-error
+                        *ngIf="addNewAssetForm.get('assignee')?.touched && addNewAssetForm.get('assignee')?.invalid">
+
+                        Assignee is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+           </div>
+
+
+            <div class="flex flex-col  gap-2 py-2">
+                <h1 class="font-semibold text-[0.9rem]">Asset Related Images</h1>
+                <div class="flex h-36 w-[100%] border-2 border-gray-300 border-solid items-center ">
+
+                    <div>
+                        <label for="images"></label>
+                        <input type="file" id="images" (change)="onImageSelect($event)" multiple accept="image/*"
+                            #fileInput hidden />
+                    </div>
+                    <button class="flex flex-col justify-center  h-28 w-28 bg-gray-100 rounded-md items-center"
+                        (click)="triggerFileInput(fileInput)">
+                        <img src="../../../../assets/Asset Management Assets/Icon/Add Banner.svg" alt="" class="" />
+                        Add Image</button>
+                    <div class="image-preview overflow-x-auto">
+                        <div *ngFor="let img of uploadedAssetImages; let i = index" class="preview">
+                            <img [src]="img" alt="Preview" />
+                            <button type="button" (click)="removeImage(i)">X</button>
+                        </div>
+                    </div>
+                </div>
+                <span class="font-normal text-[0.8rem] text-gray-500">Upload asset and warrenty images for future reference</span>
+            </div>
+
+       <div class="flex">
+        
+        <button type="submit" class="  jusfity-end bg-[#03B877] p-2 text-white rounded-md px-6 text-[0.8rem] ml-auto"
+        (click)="handleSaveAssset(addNewAssetForm)"
+        [disabled]="!(addNewAssetForm.touched && addNewAssetForm.valid)">Save</button>
+       </div>
+           
+        </form>
+
+    </div>
+
+
+</div>

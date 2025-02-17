@@ -1,0 +1,509 @@
+<div
+  class="relative bg-gray-100 text-gray-800 border-none outline-none overflow-hidden"
+>
+  <header
+    class="fixed right-0 z-10 top-0 left-64  bg-white py-3 px-4 h-16 shadow-md"
+  >
+    <div class="flex items-center justify-between">
+      <div class="relative w-1/3 ml-8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400"
+        >
+          <path
+            fill="currentColor"
+            d="M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9s-9-4.032-9-9s4.032-9 9-9m0 16c3.867 0 7-3.133 7-7s-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7m8.485.071l2.829 2.828l-1.415 1.415l-2.828-2.829z"
+          />
+        </svg>
+        <input
+          type="text"
+          placeholder="Search..."
+          class="py-1 pl-10 pr-4 w-full rounded-lg border-2 text-gray-900 border-solid border-gray-200 focus:outline-none focus:ring-offset-2"
+        />
+      </div>
+
+      <div class="flex items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          class="text-gray-500"
+          viewBox="0 0 24 24"
+        >
+          <g fill="none">
+            <path
+              d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z"
+            />
+            <path
+              fill="currentColor"
+              d="M12 2a7 7 0 0 0-7 7v3.528a1 1 0 0 1-.105.447l-1.717 3.433A1.1 1.1 0 0 0 4.162 18h15.676a1.1 1.1 0 0 0 .984-1.592l-1.716-3.433a1 1 0 0 1-.106-.447V9a7 7 0 0 0-7-7m0 19a3 3 0 0 1-2.83-2h5.66A3 3 0 0 1 12 21"
+            />
+          </g>
+          <circle cx="19" cy="5" r="4" fill="red" />
+        </svg>
+        <img
+          class="object-cover w-10 h-10 self-center mx-2 rounded-full"
+          src="https://randomuser.me/api/portraits/women/2.jpg"
+          alt="Jyoti Kumari"
+        />
+        <div class="ml-2">
+          <h3
+            class="font-extrabold text-xs text-black"
+            style="
+              margin: 0;
+              padding: 0;
+              line-height: 1;
+              font-size: 16px;
+              font-weight: 500;
+            "
+          >
+            Jyoti Kumari
+          </h3>
+
+          <p
+            class="text-gray-500 text-xs"
+            style="margin-top: 4px; padding: 0; line-height: 1"
+          >
+            HR Manager
+
+            <span>(Admin)</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside class="fixed inset-y-0 left-0 bg-white shadow-md max-h-screen w-64">
+    <div
+      class="fixed flex flex-col top-0 left-0 w-64 bg-white shadow-lg h-full border-r-0 outline-none"
+    >
+      <div class="flex items-center px-6 h-14 py-2 shadow-inner">
+        <img
+          src="https://digitalmarketplace-sapcpprd.s3.eu-central-1.amazonaws.com/EPFsfQuK5A3Kw9aJEzTDdAlhKp3jgPqdxADFwhiBfrHMdqHBENbQMfaz491cVfpV.png"
+          class="w-24"
+        />
+      </div>
+      <div class="overflow-y-auto overflow-x-hidden flex-grow">
+        <ul class="flex flex-col gap-1 py-12">
+          <li class="px-5">
+            <a
+              routerLink="./home"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              id="home"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-5 w-5"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z"></path>
+                  <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
+                  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
+                  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
+                </svg>
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Home</span
+              >
+            </a>
+          </li>
+
+          <li class="px-5">
+            <a
+              routerLink="./action-center"
+              id="action-center"
+              routerLinkActive="active"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                  <path d="M17 22.6797C15.6167 22.6797 14.4377 22.192 13.463 21.2167C12.4883 20.2414 12.0007 19.0624 12 17.6797C11.9993 16.297 12.487 15.118 13.463 14.1427C14.439 13.1674 15.618 12.6797 17 12.6797C18.382 12.6797 19.5613 13.1674 20.538 14.1427C21.5147 15.118 22.002 16.297 22 17.6797C21.998 19.0624 21.5103 20.2417 20.537 21.2177C19.5637 22.1937 18.3847 22.681 17 22.6797ZM18.675 20.0547L19.375 19.3547L17.5 17.4797V14.6797H16.5V17.8797L18.675 20.0547ZM5 21.6797C4.45 21.6797 3.97933 21.484 3.588 21.0927C3.19667 20.7014 3.00067 20.2304 3 19.6797V5.67969C3 5.12969 3.196 4.65902 3.588 4.26769C3.98 3.87635 4.45067 3.68035 5 3.67969H9.175C9.35833 3.09635 9.71667 2.61735 10.25 2.24269C10.7833 1.86802 11.3667 1.68035 12 1.67969C12.6667 1.67969 13.2627 1.86735 13.788 2.24269C14.3133 2.61802 14.6673 3.09702 14.85 3.67969H19C19.55 3.67969 20.021 3.87569 20.413 4.26769C20.805 4.65969 21.0007 5.13035 21 5.67969V11.9297C20.7 11.713 20.3833 11.5297 20.05 11.3797C19.7167 11.2297 19.3667 11.0964 19 10.9797V5.67969H17V8.67969H7V5.67969H5V19.6797H10.3C10.4167 20.0464 10.55 20.3964 10.7 20.7297C10.85 21.063 11.0333 21.3797 11.25 21.6797H5ZM12 5.67969C12.2833 5.67969 12.521 5.58369 12.713 5.39169C12.905 5.19969 13.0007 4.96235 13 4.67969C12.9993 4.39702 12.9033 4.15969 12.712 3.96769C12.5207 3.77569 12.2833 3.67969 12 3.67969C11.7167 3.67969 11.4793 3.77569 11.288 3.96769C11.0967 4.15969 11.0007 4.39702 11 4.67969C10.9993 4.96235 11.0953 5.20002 11.288 5.39269C11.4807 5.58535 11.718 5.68102 12 5.67969Z" fill="#777777" stroke-width="1"    stroke="currentColor"/>
+                  <!-- <path d="M17 22.6797C15.6167 22.6797 14.4377 22.192 13.463 21.2167C12.4883 20.2414 12.0007 19.0624 12 17.6797C11.9993 16.297 12.487 15.118 13.463 14.1427C14.439 13.1674 15.618 12.6797 17 12.6797C18.382 12.6797 19.5613 13.1674 20.538 14.1427C21.5147 15.118 22.002 16.297 22 17.6797C21.998 19.0624 21.5103 20.2417 20.537 21.2177C19.5637 22.1937 18.3847 22.681 17 22.6797ZM18.675 20.0547L19.375 19.3547L17.5 17.4797V14.6797H16.5V17.8797L18.675 20.0547ZM5 21.6797C4.45 21.6797 3.97933 21.484 3.588 21.0927C3.19667 20.7014 3.00067 20.2304 3 19.6797V5.67969C3 5.12969 3.196 4.65902 3.588 4.26769C3.98 3.87635 4.45067 3.68035 5 3.67969H9.175C9.35833 3.09635 9.71667 2.61735 10.25 2.24269C10.7833 1.86802 11.3667 1.68035 12 1.67969C12.6667 1.67969 13.2627 1.86735 13.788 2.24269C14.3133 2.61802 14.6673 3.09702 14.85 3.67969H19C19.55 3.67969 20.021 3.87569 20.413 4.26769C20.805 4.65969 21.0007 5.13035 21 5.67969V11.9297C20.7 11.713 20.3833 11.5297 20.05 11.3797C19.7167 11.2297 19.3667 11.0964 19 10.9797V5.67969H17V8.67969H7V5.67969H5V19.6797H10.3C10.4167 20.0464 10.55 20.3964 10.7 20.7297C10.85 21.063 11.0333 21.3797 11.25 21.6797H5ZM12 5.67969C12.2833 5.67969 12.521 5.58369 12.713 5.39169C12.905 5.19969 13.0007 4.96235 13 4.67969C12.9993 4.39702 12.9033 4.15969 12.712 3.96769C12.5207 3.77569 12.2833 3.67969 12 3.67969C11.7167 3.67969 11.4793 3.77569 11.288 3.96769C11.0967 4.15969 11.0007 4.39702 11 4.67969C10.9993 4.96235 11.0953 5.20002 11.288 5.39269C11.4807 5.58535 11.718 5.68102 12 5.67969Z" fill="white"  /> -->
+
+                </svg>
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Action Center</span
+              >
+            </a>
+          </li>
+
+
+          <!-- HR Policies -->
+          <li class="px-5">
+            <a
+              routerLink="./hr-policies"
+              id="hr"
+              routerLinkActive="active"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                >
+                  <path
+                    d="M20 12V17C20 18.8856 20 19.8284 19.4142 20.4142C18.8284 21 17.8856 21 16 21H6.5C5.11929 21 4 19.8807 4 18.5V18.5C4 17.1193 5.11929 16 6.5 16H16C17.8856 16 18.8284 16 19.4142 15.4142C20 14.8284 20 13.8856 20 12V7C20 5.11438 20 4.17157 19.4142 3.58579C18.8284 3 17.8856 3 16 3H8C6.11438 3 5.17157 3 4.58579 3.58579C4 4.17157 4 5.11438 4 7V18.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></path>
+                  <path
+                    d="M9 8L15 8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >HR Policies</span
+              >
+            </a>
+          </li>
+
+          <!-- My Documents -->
+          <li class="px-5">
+            <a
+              routerLink="./my-documents"
+              routerLinkActive="active"
+              id="mydocs"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-4 w-4"
+                >
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >My Documents</span
+              >
+            </a>
+          </li>
+
+          <!-- Holiday Calendar -->
+          <li class="px-5">
+            <a
+              routerLink="./holiday-calendar"
+              routerLinkActive="active"
+              id="holidays"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                >
+                  <rect
+                    x="3"
+                    y="6"
+                    width="18"
+                    height="15"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></rect>
+                  <path
+                    d="M3 10C3 8.11438 3 7.17157 3.58579 6.58579C4.17157 6 5.11438 6 7 6H17C18.8856 6 19.8284 6 20.4142 6.58579C21 7.17157 21 8.11438 21 10H3Z"
+                    fill="currentColor"
+                  ></path>
+                  <path
+                    d="M7 3L7 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                  <path
+                    d="M17 3L17 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                  <rect
+                    x="7"
+                    y="12"
+                    width="4"
+                    height="2"
+                    rx="0.5"
+                    fill="currentColor"
+                  ></rect>
+                  <rect
+                    x="7"
+                    y="16"
+                    width="4"
+                    height="2"
+                    rx="0.5"
+                    fill="currentColor"
+                  ></rect>
+                  <rect
+                    x="13"
+                    y="12"
+                    width="4"
+                    height="2"
+                    rx="0.5"
+                    fill="currentColor"
+                  ></rect>
+                  <rect
+                    x="13"
+                    y="16"
+                    width="4"
+                    height="2"
+                    rx="0.5"
+                    fill="currentColor"
+                  ></rect>
+                </svg>
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Holiday Calendar</span
+              >
+            </a>
+          </li>
+
+          <!-- Upcoming Events -->
+          <li class="px-5">
+            <a
+              routerLink="./upcoming-events"
+              routerLinkActive="active"
+              id="events"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                >
+                  <rect
+                    x="6"
+                    y="4"
+                    width="13"
+                    height="17"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></rect>
+                  <path
+                    d="M15 10V8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                  <path
+                    d="M4 9H8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                  <path
+                    d="M4 13H8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Upcoming Events</span
+              >
+            </a>
+          </li>
+
+          <!-- Time Sheet -->
+          <li class="px-5">
+            <a
+              routerLink="./time-sheet"
+              routerLinkActive="active"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                >
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></circle>
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></circle>
+                  <path
+                    d="M12 3V7.5M18 18L15 15M18 6L15 9M3 12H7.5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Time Sheet</span
+              >
+            </a>
+          </li>
+
+          <!-- Employees -->
+          <li class="px-5">
+            <a
+              routerLink="./employees"
+              routerLinkActive="active"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg
+                  viewBox="0 0 21 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4"
+                >
+                  <path
+                    d="M8.01499 9.51125C7.92749 9.5025 7.82249 9.5025 7.72624 9.51125C5.64374 9.44125 3.98999 7.735 3.98999 5.635C3.98999 3.49125 5.72249 1.75 7.87499 1.75C10.0187 1.75 11.76 3.49125 11.76 5.635C11.7512 7.735 10.0975 9.44125 8.01499 9.51125Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M14.3587 3.5C16.0562 3.5 17.4212 4.87375 17.4212 6.5625C17.4212 8.21625 16.1087 9.56375 14.4725 9.625C14.4025 9.61625 14.3237 9.61625 14.245 9.625"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M3.64 12.74C1.5225 14.1575 1.5225 16.4675 3.64 17.8762C6.04625 19.4862 9.99251 19.4862 12.3988 17.8762C14.5163 16.4587 14.5163 14.1488 12.3988 12.74C10.0013 11.1388 6.055 11.1388 3.64 12.74Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M16.0475 17.5C16.6775 17.3687 17.2725 17.115 17.7625 16.7387C19.1275 15.715 19.1275 14.0262 17.7625 13.0025C17.2812 12.635 16.695 12.39 16.0737 12.25"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Employees</span
+              >
+            </a>
+          </li>
+
+          <!-- Forms -->
+
+          <li class="px-5">
+            <a
+              routerLink="./forms"
+              routerLinkActive="active"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 7.67969C4 5.79407 4 4.85126 4.58579 4.26547C5.17157 3.67969 6.11438 3.67969 8 3.67969H16C17.8856 3.67969 18.8284 3.67969 19.4142 4.26547C20 4.85126 20 5.79407 20 7.67969V15.6797C20 18.5081 20 19.9223 19.1213 20.801C18.2426 21.6797 16.8284 21.6797 14 21.6797H10C7.17157 21.6797 5.75736 21.6797 4.87868 20.801C4 19.9223 4 18.5081 4 15.6797V7.67969Z" stroke="#777777" stroke-width="2"/>
+                  <path d="M15 18.6797L15 21.6797M9 18.6797L9 21.6797" stroke="#777777" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 8.67969L15 8.67969" stroke="#777777" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M9 12.6797L15 12.6797" stroke="#777777" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Forms</span
+              >
+            </a>
+          </li>
+
+
+          <!-- Careers -->
+          <li class="px-5">
+            <a
+              routerLink="./careers"
+              routerLinkActive="active"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 3.6797V3.6797C19.6569 3.6797 21 5.02284 21 6.67969L21 8.82255C21 9.15667 21 9.32373 20.9234 9.4457C20.8834 9.50931 20.8296 9.56309 20.766 9.60305C20.644 9.67969 20.477 9.67969 20.1429 9.67969L15 9.67969M18 3.6797V3.6797C16.3431 3.6797 15 5.02284 15 6.67969L15 9.67969M18 3.6797L7 3.6797C5.11438 3.6797 4.17157 3.6797 3.58579 4.26548C3 4.85127 3 5.79408 3 7.6797L3 21.6797L6 20.6797L9 21.6797L12 20.6797L15 21.6797L15 9.67969" stroke="#777777" stroke-width="2"/>
+                  <path d="M7 7.67969L11 7.67969" stroke="#777777" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M8 11.6797H7" stroke="#777777" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M7 15.6797L10 15.6797" stroke="#777777" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                  
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Careers</span
+              >
+            </a>
+          </li>
+
+          <!-- Divider -->
+          <hr />
+
+          <!-- Asset Management -->
+          <li class="px-5">
+            <a
+              routerLink="./asset-management"
+              routerLinkActive="active"
+              class="relative flex flex-row space-x-2 items-center h-11 focus:outline-none hover:rounded-md text-gray-600 hover:text-white border-l-4 border-transparent hover:bg-black px-3"
+            >
+              <span class="inline-flex justify-center items-center">
+                <svg width="22" height="25" viewBox="0 0 22 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.77734 19.6777H19.5552M3.55513 7.67773C3.55513 7.1473 3.74243 6.63859 4.07583 6.26352C4.40923 5.88845 4.86142 5.67773 5.33292 5.67773H15.9996C16.4711 5.67773 16.9233 5.88845 17.2567 6.26352C17.5901 6.63859 17.7774 7.1473 17.7774 7.67773V16.6777H3.55513V7.67773Z" stroke="#6B7582" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  
+              </span>
+              <span class="text-sm font-medium tracking-wide truncate"
+                >Asset Management</span
+              >
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <main class=" bg-gray-100 ml-64 mt-16 flex-auto overflow-y-auto min-h-screen">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- <div class="px-2 py-8">
+      <div class="max-w-4xl mx-auto">
+      </div>
+    </div> -->
+  </main>
+</div>

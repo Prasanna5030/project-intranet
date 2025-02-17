@@ -1,0 +1,26 @@
+// view-applications.component.scss
+
+// Modern scrollbar styles for horizontal scrolling only
+.overflow-x-auto {
+  // For Webkit browsers (Chrome, Safari)
+  &::-webkit-scrollbar {
+    height: 6px; // Controls the height of the horizontal scrollbar
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f3f4f6; // Very light gray background
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #e5e7eb; // Light gray thumb
+    border-radius: 4px;
+
+    &:hover {
+      background: #d1d5db; // Slightly darker on hover
+    }
+  }
+
+  // For Firefox
+  scrollbar-width: thin;
+  scrollbar-color: #e5e7eb #f3f4f6;
+}

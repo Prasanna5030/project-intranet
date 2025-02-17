@@ -1,0 +1,111 @@
+.heading .custom-details ::before{
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    border-bottom: 1px solid #b41414;
+    width: 20%;
+    height: 0;
+}
+
+
+
+/* General Stepper Container */
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 80%;
+    margin: 20px auto;
+    position: relative;
+    margin-left: 20%;
+  }
+  
+  /* Individual Steps */
+  .step {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-grow: 1;
+  }
+  
+  /* Circles */
+  .circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 1;
+  }
+  
+  /* Step Label */
+  .step span {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Line Between Steps */
+  .line {
+    height: 1px;
+    width: 40%;
+    background-color: #ddd;
+    flex-grow: 1;
+    position: absolute;
+    top: 50%;
+    right: 10%; /* Adjust for spacing */
+    z-index: 0;
+  }
+  
+  /* Remove line for the last step */
+  .step:last-child .line {
+   // display: none;
+  }
+  
+  /* Active Step Styling */
+  .step.active .circle {
+    background-color: #007bff;
+    color: #fff;
+
+  }
+
+  .step.notActive .circle{
+    background-color: #ccc;
+    color: black;
+  }
+
+  .step.valid .circle {
+    background-color: rgb(7, 205, 7);
+    color: #fff;
+  }
+
+  .step.valid span {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .step.active span {
+    font-weight: bold;
+    color: #000;
+  }
+
+
+  .step.valid .line{
+    background-color: rgb(7, 205, 7);
+  }
+  
+
+  ::ng-deep{
+    .cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        transform-origin: top center;
+        scrollbar-width: none;
+    }
+}

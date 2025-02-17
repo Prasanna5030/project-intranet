@@ -1,0 +1,68 @@
+.custom-form-field{
+    width: 350px;
+}
+
+.exit-task-form{
+    ::ng-deep  {
+         mat-form-field > .mat-form-field-appearance-outline .mat-form-field-outline{
+            border-color: aliceblue !important;
+
+         }
+    }
+}
+
+
+// ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+//     color: red!important;
+//     // opacity: 1!important;
+// }
+
+/* Change the border color */
+
+.exit-task-form{
+
+    ::ng-deep {
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: rgb(220, 218, 215) !important;
+}
+
+/* Change the border width */
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+//   .mdc-notched-outline
+//   .mdc-notched-outline__leading,
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+//   .mdc-notched-outline
+//   .mdc-notched-outline__notch,
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+//   .mdc-notched-outline
+//   .mdc-notched-outline__trailing {
+//   border-width: 1.5px !important;
+// }
+
+/* Change the border focused color */
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+//   .mdc-notched-outline__leading,
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+//   .mdc-notched-outline__notch,
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+//   .mdc-notched-outline__trailing {
+//   border-color: var(--color-primary) !important;
+// }
+
+/* Change the border hover color */
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+//   .mdc-notched-outline
+//   .mdc-notched-outline__leading,
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+//   .mdc-notched-outline
+//   .mdc-notched-outline__notch,
+// .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover
+//   .mdc-notched-outline
+//   .mdc-notched-outline__trailing {
+//   border-color: var(--color-primary) !important;
+// }
+
+    }
+}

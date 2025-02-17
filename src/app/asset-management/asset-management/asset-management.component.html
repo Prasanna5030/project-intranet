@@ -1,0 +1,418 @@
+<div class=" py-8 px-[3%] h-auto">
+    <div class=" w-full">
+        <div class="flex justify-between">
+            <div class="flex flex-col">
+                <h1 class="flex font-semibold text-[1.125rem] text-gray-800 dark:text-black row items-center gap-2">Asset
+                    Mangement </h1>
+                <span class="mt-1 font-normal text-[0.9rem]  dark:text-gray-500 "> Welcome to asset management section , where
+                    you can add, manage and track all the company assets</span>
+            </div>
+            <button class="rounded-full px-4 bg-blue-500 text-white my-2" (click)="handleAddNewAsset()"> <span
+                    class="font-normal text-[0.8rem]">+ Add New Asset</span></button>
+        </div>
+        <div class="relative mt-6">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+
+            <input type="text" [(ngModel)]="searchTerm" (keyup)="applyFilter()"
+                placeholder="Search assets by category, Id or employee"
+                class="p-2 pl-10 border w-[30%] border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 " />
+
+        </div>
+       <div class="relative">
+        
+        <div class=" absolute  right-[0%] top-[0%] filtered-container z-10">
+            <div class="flex justify-end gap-2 p-2 h-10">
+                <img src="../../../assets/Asset Management Assets/Icon/Filter.svg" alt="img" class="p-1" />
+
+                <!-- <div *ngIf="showDepartmentFilter" >
+                    <mat-form-field appearance="outline" class="custom-width">
+                        <mat-label>Deparment</mat-label>
+                        <mat-select [formControl]="departmentControl" multiple
+                            (selectionChange)="onDepartmentChange()" class="">
+    
+                            <input type="text" class="w-[90%] m-2 p-1  border text-sm border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100" placeholder="Search " (input)="filterDepartments($event)" (click)="$event.stopPropagation()"/>
+    
+        
+                                    <mat-option *ngFor="let department of filteredDepartments" [value]="department"  (click)="filterTableDepartments($event, department)">
+                                   {{department}}</mat-option>
+                             
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <mat-form-field appearance="outline" class="custom-width">
+                    <mat-label>Asset Category</mat-label>
+                    <mat-select [formControl]="assetCategoryControl" multiple
+                        (selectionChange)="onAssetCategoryChange($event)" class="">
+
+                        <input type="text" class="w-[90%] m-2 p-1  border text-sm border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100" placeholder="Search " (input)="filterAssetCategories($event)" (click)="$event.stopPropagation()"/>
+
+    
+                                <mat-option *ngFor="let category of filteredAssetCategories" [value]="category"
+                                (click)="filterTableAssetCategories($event, category)">{{category}}</mat-option>
+                         
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline" class="custom-height">
+                    <mat-label>Asset Id</mat-label>
+                    <mat-select [formControl]="assetIdControl" multiple (selectionChange)="onAssetIdChange()">
+
+                        <input type="text"
+                            class="w-[90%] m-2 p-1  border text-sm  border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"
+                            placeholder="Search " (input)="filterAssetId($event)" (click)="$event.stopPropagation()" />
+
+                        <mat-option *ngFor="let id of filteredAssetIds; let i=index" [value]="id"
+                            class="p-1 overflow-x-hidden" (click)="filterTableAssetIds($event, id)">{{id}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select placeholder="Toppings" [formControl]="toppings" multiple [(ngModel)]="selected">
+                      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+
+                  <div *ngIf="showDepartmentFilter">
+                    <mat-form-field appearance="outline" class="custom-width">
+                        <mat-select placeholder="Department" [formControl] ="departmentControl" multiple >
+                            <input type="text" placeholder="search" (input)="filterDepartments($event)" (click)="$event.stopPropagation()"
+                            class="w-[90%] m-2 p-1  border text-sm border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"/>
+                            <mat-option *ngFor="let asset of filteredDepartments" [value]="asset" (click)="filterTableDepartments($event, asset)" class="scrollbar-hide">{{asset}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <mat-form-field appearance="outline"  class="custom-width">
+                    <mat-select placeholder="Asset category" [formControl]="assetCategoryControl" multiple  >
+                        <input type="text" placeholder="Search" (input)="filterAssetCategories($event)" (click)="$event.stopPropagation()"
+                        class="w-[90%] m-2 p-1  border text-sm border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"/>
+                        <mat-option *ngFor="let asset of filteredAssetCategories" [value]="asset" (click)="filterTableAssetCategories($event, asset)" class="scrollbar-hide"> {{asset}}</mat-option>
+                        </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="custom-width ">
+
+                    <mat-select placeholder="Asset Id" [formControl]="assetIdControl" multiple   >
+                        <input type="text" placeholder="Search" (input)="filterAssetId($event) " (click)="$event.stopPropagation()" 
+                        class="w-[90%] m-2 p-1  border text-sm border-gray-300 rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100"/>
+                        <mat-option *ngFor="let asset of filteredAssetIds" [value]="asset" (click)="filterTableAssetIds($event, asset)" class="scrollbar-hide"> {{asset}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                <button class="text-blue-500 text-sm cursor-pointer px-2  " (click)="handleFilterClear()"> Clear
+                    All </button>
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" (selectedTabChange)="matTabChange($event)">
+                <mat-tab label="All Assets">
+                    <div class="flex flex-col py-6">
+                        <div class="flex m-2 justify-between">
+                            <span class="text-sm font-medium">Total number of assets : 230 </span>
+                            <div>
+                                <span class="text-sm text-gray-600">Rows Per Page</span>
+                                <select [(ngModel)]="pageSize" (change)="onPageSizeChange(pageSize)"
+                                    class="p-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                                    <option [value]="5">5</option>
+                                    <option [value]="10">10</option>
+                                    <option [value]="25">25</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="w-full ">
+                            <div class="    inline-block min-w-full py-2 align-middle ">
+                                <div class="overflow-x-hidden rounded-lg">
+                                    <table mat-table [dataSource]="assetsTableData1" class="mat-elevation-z8">
+
+                                        <ng-container matColumnDef="assetCategory">
+                                            <th mat-header-cell *matHeaderCellDef> Asset Category </th>
+                                            <td mat-cell *matCellDef="let element">{{element.assetCategory}}</td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="assetId">
+                                            <th mat-header-cell *matHeaderCellDef> Asset ID </th>
+                                            <td mat-cell *matCellDef="let element">{{element.assetId}}</td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="warrenty">
+                                            <th mat-header-cell *matHeaderCellDef>Warrenty Expiry</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <ng-container *ngIf="element.warrenty === 'expired'; else notExpired">
+                                                    <div class="flex items-center h-auto relative">
+                                                        <div
+                                                            class="bg-red-500 w-2 h-2 rounded-lg z-100 absolute left-[0.6rem]">
+                                                        </div>
+                                                        <span class="bg-red-200 p-2 rounded-lg px-8">Expired</span>
+                                                    </div>
+                                                </ng-container>
+
+                                                <ng-template #notExpired>
+                                                    <span>{{element.warrenty}}</span>
+                                                </ng-template>
+                                            </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="assetStatus">
+                                            <th mat-header-cell *matHeaderCellDef>Asset Status</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <ng-container *ngIf="element.assetStatus; else unassign">
+                                                    <div class="flex items-center h-auto relative">
+                                                        <div
+                                                            class="bg-green-500 w-2 h-2 rounded-lg z-100 absolute left-[0.6rem]">
+                                                        </div>
+                                                        <span class="bg-green-200 p-2 rounded-lg px-8">Assigned</span>
+                                                    </div>
+                                                </ng-container>
+
+                                                <ng-template #unassign>
+                                                    <span class="text-sm"> Unassigned</span>
+                                                </ng-template>
+                                            </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="assignee">
+                                            <th mat-header-cell *matHeaderCellDef>Assignee</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <ng-container *ngIf=" element.assignee !== null; else unassign">
+                                                    <div class="flex h-auto items-center">
+                                                        <img src="../../../assets/downloaded/Ellipse 2353.png" alt="" />
+                                                        <span class="px-1 ">{{element.assignee}}</span>
+                                                    </div>
+
+                                                </ng-container>
+
+                                                <ng-template #unassign>
+                                                    <button (click)="handleAssignAsset(element)">
+                                                        <span class="text-sky-500 inline"> + Assign</span>
+                                                    </button>
+                                                </ng-template>
+                                            </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="actions">
+                                            <th mat-header-cell *matHeaderCellDef>Actions</th>
+                                            <td mat-cell *matCellDef="let element">
+                                                <button mat-icon-button matTooltip="Edit"
+                                                    (click)="handleEditAction(element)">
+                                                    <img src="../../../assets/Asset Management Assets/Icon/Edit.svg"
+                                                        alt="" />
+                                                </button>
+                                                <button mat-icon-button matTooltip="Unassign" [disabled]="element.assetStatus === false "
+                                                    (click)="handleUnassignAction(element)">
+                                                    <img *ngIf="element.assetStatus === true" src="../../../assets/Asset Management Assets/Icon/Unassign.svg"
+                                                        alt="" />
+                                                    <img *ngIf="element.assetStatus === false" src="../../../assets/Asset Management Assets/Icon/Unassign-Grey.svg" alt="" />
+                                                </button> 
+                                                <button mat-icon-button matTooltip="View Details"
+                                                    (click)="handleViewDetailsAction(element)">
+                                                    <img src="../../../assets/Asset Management Assets/Icon/View Details.svg"
+                                                        alt="" />
+                                                </button>
+                                            </td>
+                                        </ng-container>
+
+                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                        <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235 )'" class="hover:bg-blue-100" *matRowDef="let row;columns : displayedColumns;"></tr>
+
+                                    </table>
+                                    <mat-paginator #paginator1 [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+                                        aria-label="Select page">
+                                    </mat-paginator>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Assigned Assets">
+                    <div class="flex flex-col py-6">
+                        <div class="flex m-2 justify-between">
+                            <span class="text-sm font-medium">Total number of assets : 320</span>
+                            <div>
+                                <span class="text-sm text-gray-600">Rows Per Page</span>
+                                <select [(ngModel)]="pageSize" (change)="onPageSizeChange(pageSize)"
+                                    class="p-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                                    <option [value]="5">5</option>
+                                    <option [value]="10">10</option>
+                                    <option [value]="25">25</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!--  assignedDisplayColumns: string[]=['assetCategory' ,'assetId' , 'assigneeId' , 'assignee' , 'department' , 'assignedDate' , 'actions']; -->
+
+                        <div class="w-full">
+                            <div class="    inline-block min-w-full py-2 align-middle ">
+                                <div class="overflow-x-hidden rounded-lg">
+
+                            <table mat-table [dataSource]="assetsTableData2" class="mat-elevation-z8">
+                                <ng-container matColumnDef="assetCategory">
+                                    <th mat-header-cell *matHeaderCellDef>Asset Category</th>
+                                    <td mat-cell *matCellDef="let element">{{element.assetCategory}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="assetId">
+                                    <th mat-header-cell *matHeaderCellDef>Asset ID</th>
+                                    <td mat-cell *matCellDef="let element">{{element.assetId}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="assigneeId">
+                                    <th mat-header-cell *matHeaderCellDef>Assignee ID</th>
+                                    <td mat-cell *matCellDef="let element">{{element.assigneeId}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="assignee">
+                                    <th mat-header-cell *matHeaderCellDef>Assignee</th>
+                                    <td mat-cell *matCellDef="let element">{{element.assignee}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="department">
+                                    <th mat-header-cell *matHeaderCellDef>Department</th>
+                                    <td mat-cell *matCellDef="let element">{{element.department}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="assignedDate">
+                                    <th mat-header-cell *matHeaderCellDef>Assigned Date</th>
+                                    <td mat-cell *matCellDef="let element">{{element.assignedDate | date}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="actions">
+                                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <button mat-icon-button matTooltip="Unassign"
+                                            (click)="handleUnassignAction(element)">
+                                            <img src="../../../assets/Asset Management Assets/Icon/Unassign.svg"
+                                                alt="" />
+                                        </button>
+                                        <button mat-icon-button matTooltip="View Details"
+                                            (click)="handleViewDetailsAction(element)">
+                                            <img src="../../../assets/Asset Management Assets/Icon/View Details.svg"
+                                                alt="" />
+                                        </button>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="assignedDisplayColumns"></tr>
+                                <tr mat-row [style.border-bottom]="'2px solid rgb(229 231 235 )'" class="hover:bg-blue-100" *matRowDef="let row; columns: assignedDisplayColumns;"></tr>
+                            </table>
+                            <mat-paginator #paginator2 [pageSize]="5" [pageSizeOptions]="[5,10,15,20]" ></mat-paginator>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Unassigned Assets">
+
+                    <div class="flex flex-col py-6">
+                        <div class="flex m-2 justify-between">
+                            <span class="text-sm font-medium">Total number of assets : 120</span>
+                            <div>
+                                <span class="text-sm text-gray-600">Rows Per Page</span>
+                                <select [(ngModel)]="pageSize" (change)="onPageSizeChange(pageSize)"
+                                    class="p-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                                    <option [value]="5">5</option>
+                                    <option [value]="10">10</option>
+                                    <option [value]="25">25</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="w-full">
+                            <div class="    inline-block min-w-full py-2 align-middle ">
+                                <div class="overflow-x-hidden rounded-lg">
+                            <table mat-table [dataSource]="assetsTableData3" class="mat-elevation-z8">
+
+                                <ng-container matColumnDef="assetCategory">
+                                    <th mat-header-cell *matHeaderCellDef>Asset Category</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.assetCategory}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="assetId">
+                                    <th mat-header-cell *matHeaderCellDef>Asset Id</th>
+                                    <td mat-cell *matCellDef="let element">{{element.assetId}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="purchaseDate">
+                                    <th mat-header-cell *matHeaderCellDef>Purchase Date</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.purchaseDate}}</td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="warrenty">
+                                    <th mat-header-cell *matHeaderCellDef>Warrenty Expiry</th>
+                                    <td mat-cell *matCellDef="let element"> 
+                                        <ng-container *ngIf="element.warrenty === 'expired'; else notExpired">
+                                            <div class="flex items-center h-auto relative">
+                                                <div
+                                                    class="bg-red-500 w-2 h-2 rounded-lg z-100 absolute left-[0.6rem]">
+                                                </div>
+                                                <span class="bg-red-200 p-2 rounded-lg px-8">Expired</span>
+                                            </div>
+                                        </ng-container>
+                                        <ng-template #notExpired>
+                                            {{element.warrenty}}
+                                        </ng-template>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="previousAssignee">
+                                    <th mat-header-cell *matHeaderCellDef>Previous Assignee</th>
+                                    <td mat-cell *matCellDef="let element"> 
+                                        <ng-container *ngIf="element.previousAssignee === ''; else assigned">
+                                            <span class="">-</span>
+                                        </ng-container>
+                                        <ng-template #assigned>
+                                            <span class="">{{element.previousAssignee}}</span>
+                                        </ng-template>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="returnedOn">
+                                    <th mat-header-cell *matHeaderCellDef>Returned Date</th>
+                                    <td mat-cell *matCellDef="let element"> 
+                                        <ng-container *ngIf="element.returnedOn ==='' ; else returned">
+                                            <span class="" > - </span>
+                                        </ng-container>
+                                        <ng-template #returned>
+                                            <span class="">{{element.returnedOn}}</span>
+                                        </ng-template>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="actions">
+                                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <button mat-icon-button (click)="handleAssignAsset(element)">
+                                            <img src="../../../assets/Asset Management Assets/Icon/Assign.svg" alt="" />
+                                        </button>
+                                        <button mat-icon-button (click)="handleViewDetailsAction(element)">
+                                            <img src="../../../assets/Asset Management Assets/Icon/View Details.svg"
+                                                alt="" />
+                                        </button>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="unAssignedDisplayColumns"></tr>
+                                <tr mat-row  [style.border-bottom]="'2px solid rgb(229 231 235 )'" class="hover:bg-blue-100" *matRowDef="let row ; columns: unAssignedDisplayColumns"></tr>
+
+                            </table>
+                            <mat-paginator #paginator3 [pageSize]="5" [pageSizeOptions]="[5,10,15,20]" ></mat-paginator>
+                            </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+       </div>
+    </div>
+</div>
+
+<app-edit-asset *ngIf="showEditAsset" [asset]="selectedAsset"></app-edit-asset>

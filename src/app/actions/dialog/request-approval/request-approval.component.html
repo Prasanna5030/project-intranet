@@ -1,0 +1,96 @@
+<div class="flex flex-col">
+    <div class="flex flex-col ">
+        <div class="flex  justify-between">
+            <span class="font-bold">Request Approval</span>
+            <button mat-icon-button ><mat-icon mat-dialog-close>close</mat-icon></button>
+        </div>
+        <span class="text-sm text-gray-500 -my-4">Send offer or promotion letter to the employer's respective manager to verify</span>
+
+        
+
+
+        <div class="form -mx-6 my-2 ">
+
+            <mat-dialog-content  class="mat-topograpghy">
+                <form [formGroup]="requestApprovalForm" class="form-control flex flex-col gap-2">
+
+                    <div class="flex flex-col h-48 w-full justify-center items-center border-solid border-2 border-gray-300 rounded-lg my-2">
+                        <img src="../../../../assets/downloaded/Upload.svg" alt="" class="h-24 w-24" />
+                        <input  type="file" (change)="onFileChange($event)" formControlName="file" hidden #fileInput/>
+                       
+                          <button  type="button"   (click)="triggerFileInput(fileInput)"> <span class="text-sm text-gray-500 text-sky-500 underline">Drag and drop to upload or browse</span>
+                        </button>
+                        <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+                        <span *ngIf="!selectedFile"> </span>
+                    </div>
+
+                   
+             
+                    
+
+                    <mat-form-field   appearance="outline">
+                        <mat-label>Title</mat-label>
+                        <input matInput type="text" formControlName="title"  required />
+                        <mat-error *ngIf="requestApprovalForm.get('title')?.touched && requestApprovalForm.get('title')?.errors?.['required']">
+                            *title is required</mat-error>
+                        
+                    </mat-form-field>
+
+
+                    <div class="flex flex-row justify-between gap-4">
+                        
+                        <mat-form-field class="form-input-field custom-form-field" appearance="outline">
+                            <mat-label>Department</mat-label>
+                            <mat-select formControlName="department" required>
+                                <mat-option *ngFor="let item of requestApprovalData; let i=index" [value]="item.department">
+                                    {{item.department}}
+                                </mat-option>  
+                            </mat-select>
+                            <mat-error *ngIf="requestApprovalForm.get('department')?.touched && requestApprovalForm.get('department')?.errors?.['required']">
+                               
+                                    *department is required
+                               
+                            </mat-error>
+                        </mat-form-field>
+
+
+                        <mat-form-field  class="form-input-field custom-form-field" appearance="outline">
+                            <mat-label>Assigned Employee</mat-label>
+                            <mat-select formControlName="assignedEmployee" required>
+                                <mat-option *ngFor="let item of requestApprovalData; let i = index" [value]="item.assignedEmployee">{{item.assignedEmployee}}</mat-option> 
+                            </mat-select>
+                            <mat-error *ngIf="requestApprovalForm.get('assignedEmployee')?.touched && requestApprovalForm.get('assignedEmployee')?.errors?.['required']">
+                               
+                                    This field is required
+                                
+                            </mat-error>
+                        </mat-form-field>
+
+                    </div>
+
+                    <mat-form-field   class="form-input-field" appearance="outline">
+                            <mat-label>Exit date</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="dueDate">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="requestApprovalForm.get('dueDate')?.touched && requestApprovalForm.get('dueDate')?.errors?.['required']">
+                               
+                                This field is required
+                            
+                        </mat-error>
+                        </mat-form-field>
+
+
+
+                            <button class="flex justify-end ml-auto text-[0.8rem] bg-[#03B877] p-2 px-6 text-white rounded-md" type="submit" (click)="handleFormSubmit()" 
+                            mat-dialog-close [disabled]=" !(requestApprovalForm.valid && requestApprovalForm.dirty)" >
+                            Save
+                        </button>
+                
+                </form>
+            
+            </mat-dialog-content>
+        </div>
+    </div>
+</div>
